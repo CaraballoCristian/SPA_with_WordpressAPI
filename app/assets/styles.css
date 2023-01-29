@@ -1,0 +1,62 @@
+.title{
+    text-align: center;
+}
+
+.error {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.form-search{
+    margin:auto;
+    text-align: center;
+}
+
+.form-search input{
+    display: block;
+    margin:auto;
+    padding: 0.25rem;
+    border-radius: .25rem;
+    font-size: 1rem;
+}
+
+.grid-fluid{
+    margin: 1rem auto;
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.header{
+    padding: .5rem;
+    position: sticky;
+    top:0;
+    text-align: center;
+    background-color: #fff;
+}
+
+.header > *{
+    margin: 1rem auto; 
+}
+
+.post-card{
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 80%;
+    background-color: #eceff1;
+}
+.post-card p{
+    display: flex;
+    justify-content: space-between;
+}
+
+.loader{
+    margin: 1rem auto;
+    display: block;
+    height: 4rem;
+    width: 4rem;
+}
