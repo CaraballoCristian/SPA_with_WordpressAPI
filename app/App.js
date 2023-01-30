@@ -1,31 +1,17 @@
-import api from "./helpers/wp_api.js"
-import { ajax } from "./helpers/ajax.js";
-import { Loader } from "./components/Loader.js"
 import { Header } from "./components/Header.js";
-import { Posts } from "./components/Posts.js";
-import { PostCard } from "./components/PostCard.js";
-
+import { Loader } from "./components/Loader.js"
+import { Main } from "./components/Main.js";
+import { Router } from "./components/Router.js";
+import { infiniteScroll } from "./helpers/infinite_scroll.js";
 
 export function App(){
-    const d = document,
-        $root = d.getElementById("root");
-        
+    const $root = document.getElementById("root");
+    
+    $root.innerHTML = null;
     $root.appendChild(Header());
-    $root.appendChild(Posts());
+    $root.appendChild(Main());
     $root.appendChild(Loader());
 
-    ajax({
-        url: api.POSTS,
-        cbSuccess: (posts) => {
-            let html = "";
-
-            posts.forEach((post) => html += PostCard(post)); 
-
-            d.querySelector(".loader").style.display = "none";
-            
-            //console.log(html)
-            d.getElementById("posts").innerHTML = html;
-        }
-    });
-
+    Router();
+    infiniteScroll();
 } 
