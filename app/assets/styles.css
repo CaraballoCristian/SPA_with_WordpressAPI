@@ -115,3 +115,6 @@ img{
 .post-page figure{
     max-width: fit-content;
 }
+.hidden{
+    display: none;
+}
