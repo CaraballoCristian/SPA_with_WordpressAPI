@@ -1,0 +1,56 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+//HEADER
+.header{
+    z-index: 99;
+    backdrop-filter: blur(5px);
+    height: 5rem;
+    white-space: nowrap;
+    position: sticky;
+    top:0;
+
+    background-color: rgba(0 0 0 /.7);
+
+    &__container{
+        padding-inline: 2rem;
+
+        width: 100%;
+        
+        @include flex(space-between);
+
+        & .title{
+            
+            & a{
+                color: map-get($colors, "pclr");
+                color:#eee;
+            }
+        }
+
+        
+        & nav{
+            @include flex(space-around);
+            width: 30%;
+            
+            background-color: #fff;
+            
+            & a{
+                padding-block: .5rem
+            }
+        }
+        
+        
+        .box-logo{
+            border-radius: 50%;
+            width: fit-content;
+            
+            & img{
+                background-color:blue;
+                border-radius: 50%;
+                padding:.5rem;
+                width: 40px;
+            }
+        }
+        
+    }
+}

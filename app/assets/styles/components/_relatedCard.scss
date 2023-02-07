@@ -1,0 +1,92 @@
+.related-card{
+    margin-left: 1rem;
+    & figure{
+        position:relative;
+        width: 100%;
+        height: 60px;
+        margin: 1rem 0 0;
+        transition: all 300ms ease-in-out;
+
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(255, 255, 255, .8);
+        border-radius: 10px;
+        overflow: hidden;
+
+        & figcaption{
+            text-align: start;
+            width: 80%;
+            padding: 0 .5rem .5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            & h4{
+                margin:.5rem 0 0;
+                font-size: calc(.3rem + .5vw);
+            }
+            & time{
+                
+                font-size: calc(.3rem + .5vw);
+            }
+        }
+        & img{
+            max-width:20%;
+            object-fit: cover;
+        }
+        
+        
+
+        &:hover{
+            cursor: pointer;        
+            transform: translateX(1rem);
+            
+        }
+    }
+
+
+}
+@media screen and (max-width: 1200px) {
+    .related-card{
+        transition: all 200ms ease-in-out;
+        display: flex;
+        justify-content: start;
+        margin: 0;
+        
+        & figure{
+            background-color: #eee;
+            box-shadow: -1rem 0px 2rem #000;
+            height: 200px;
+            width: 150px;
+            flex-direction: column-reverse;
+
+            margin: .5rem 0;
+
+            padding-inline:0;
+            & figcaption{
+                width: 100%;
+                height: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 0 1rem 1rem;
+            }
+            & img{
+                max-width: none;
+                height: 50%;
+            }
+        }
+        &:hover{
+            transform-origin: 100% 0;
+            transform: rotate(5deg);
+            z-index: 1;
+        }
+        &:hover~.related-card{
+            z-index: 2;
+            transform: translateX(1rem);
+        }
+        &:not(:first-child){
+            margin-left: -2rem;
+        }
+    }
+}

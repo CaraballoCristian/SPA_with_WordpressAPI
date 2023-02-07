@@ -1,0 +1,29 @@
+@import "./utils/reset";
+@import "./components/header";
+@import "./components/main";
+@import "./components/postCard";
+@import "./components/searchCard";
+@import "./components/relatedCard";
+@import "./components/post";
+@import "./components/sections";
+@import "./components/loaders";
+@import "./components/footer";
+@import "./components/form";
+@import "./components/Home";
+@import "./components/homeCard";
+
+
+.loader{
+    margin: 0 auto;
+    height: 4rem;
+    width: 4rem;
+}
+
+.error {
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background-color: #dc3545;
+}

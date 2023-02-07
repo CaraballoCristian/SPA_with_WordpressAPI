@@ -8,22 +8,23 @@ export async function infiniteScroll() {
         w = window;
     
         let apiURL,
-        Component;
+        Component,
+        section;
 
     w.addEventListener("scroll", async e => {
         let {scrollTop, clientHeight, scrollHeight} = d.documentElement,
             {hash} = w.location;
 
-        console.log(scrollTop, clientHeight, scrollHeight, hash)
-        console.log(scrollHeight - clientHeight)
-        if(scrollTop + clientHeight >= scrollHeight){
+        if((scrollTop + clientHeight >= scrollHeight) && (location.hash !== "#/search")){
             api.page++;
 
-            if(!hash || hash === "#/"){
+            if(!hash || hash === "#/posts"){
+                section = ".posts-section";
                 apiURL = `${api. POSTS}&page=${api.page}`;
                 Component = PostCard;
-            }else if (hash.includes("#/search")) {
-                let query = location.hash.replace("#/search?search=", "");
+            }else if (hash.includes("#/search")) {/* 
+                let query = location.hash.replace("#/search?search=", ""); */
+                section = ".search-section";
                 apiURL = `${api.SEARCH}&page=${api.page}`;
                 Component = SearchCard;
             }else return;
@@ -32,18 +33,32 @@ export async function infiniteScroll() {
             
             await ajax({
                 url: apiURL,
-                cbSuccess: (posts) => {
+                cbSuccess: async (posts) => {
                     let html = "";
-                    
-                    posts.forEach(post => html += Component(post));
+                    //console.log(posts.length)
 
-                    d.getElementById("main").insertAdjacentHTML("beforeend", html);
+                    for(let i = 0; i<posts.length; i++){
+                        if(!hash.includes("#/search")) html += Component(posts[i])
+                        
+                        else{
+                            let id = posts[i]._embedded.self[0].author;
+                            //valido que solamente traiga post cuyos autores existan
+                            if(id) {
+                                await ajax({
+                                    url: `${api.USER}/${id}`,
+                                    cbSuccess: (user) => {
+                                        html += SearchCard(posts[i], user);
+                                    },
+                                });
+                            }
+                        }
+                    }
+
+                    d.querySelector(section).insertAdjacentHTML("beforeend", html);
                     
                     d.querySelector(".loader").style.display = "none";
                 }
             })
-
-
         } 
     })
 }

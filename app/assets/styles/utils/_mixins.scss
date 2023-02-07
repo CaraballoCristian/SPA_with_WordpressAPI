@@ -1,0 +1,6 @@
+@mixin flex($justify: center, $align: center, $direction: row) {        //aca defino un valor por defecto si es que $bg-color viene vacia
+	display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}

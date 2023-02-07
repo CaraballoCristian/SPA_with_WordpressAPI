@@ -1,0 +1,69 @@
+.form{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    
+    padding: 2rem;
+    height: min(80vh, 600px);
+    width: clamp(350px, 90%, 600px);
+
+    background-color: #222;   
+    border-radius: 10px;
+
+    &__title{
+        color:#eee;
+        margin-inline:auto;
+
+    }
+
+    &__input{
+        padding: 1vh 1rem;
+        margin: .5rem;
+        border-radius: 10px;
+        
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__textarea{
+        resize: none;
+    }
+
+    &__buttons{
+        display: flex;
+        justify-content: space-between;
+
+        width: 100%;
+        margin: 0rem auto;
+        padding: .5rem .5rem;
+
+
+        &-media{
+            display: flex;
+            justify-content: space-between;
+            width: fit-content;
+
+            &-github,
+            &-linkedin{
+                border-radius: 5px;
+                padding:0;
+                background-color:transparent;
+                border:none;
+                margin-right: 1rem;
+                width: 48px;
+                & img{
+                    display: block;
+                }
+            }
+        }
+        &-submit{
+            border-radius: 5px;
+            padding: 0rem 2.5rem;
+        }
+    }
+}

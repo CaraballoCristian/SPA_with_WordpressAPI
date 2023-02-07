@@ -1,0 +1,15 @@
+@import "../utils/variables";
+
+main{
+    width: 100%;
+    margin-inline: auto;
+    padding-block: 0;
+    border-radius: 20px;
+}
+
+.grid-fluid{
+    margin: 1rem auto;
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px), 1fr));
+}

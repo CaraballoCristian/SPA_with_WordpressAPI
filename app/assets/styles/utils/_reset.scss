@@ -1,0 +1,49 @@
+
+
+html{
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    /*font-family: 'Cabin', sans-serif;*/
+}
+*::after,
+*::before,
+* {
+    box-sizing: border-box;
+}
+
+//ELEMENTOS NO SELECCIONABLES
+.title,
+.menu > *{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; 
+}
+
+a{
+    text-decoration: none;
+    margin:0;
+    padding:0;
+}
+
+
+//importante, para evitar bucles
+.selected{
+    background-color: blue;
+    color: white;
+    width: 30%;
+    text-align: center;
+    pointer-events: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+.hidden{
+    opacity: 0;
+
+}
+.visible{
+    opacity: 1;
+}

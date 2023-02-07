@@ -1,9 +1,10 @@
 const d = document;
 
 export function SearchForm() {
-    const $form = d.createElement("form"),
-        $input = d.createElement("input");
-        $form.classList.add("search-form")
+    const $form = d.createElement("form");
+        $form.classList.add("search-form");
+
+    const $input = d.createElement("input");
         $input.name = "search";
         $input.type = "search";
         $input.placeholder = "Buscar...";
@@ -11,16 +12,12 @@ export function SearchForm() {
         
         $form.appendChild($input);
 
-        
-
         d.addEventListener("submit", e =>{
             if(!e.target.matches(".search-form")) return;
-
+            
             e.preventDefault();
             let search = e.target[0].value.toLowerCase();
             window.location.hash = "#/search?search=" + search;
-
-            //console.log("hash  " + window.location.hash.slice(8))
         })
 
     return $form;

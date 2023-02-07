@@ -8,7 +8,7 @@ export async function ajax(props){
             let msg = err.statusText || "Ocurrio un error al acceder a la API";
             
             //aca deberia poner el timeout
-            document.querySelector(".loader").style.display = "none";
+            //document.querySelector(".loader").style.display = "none";
 
             document.getElementById("main").innerHTML = `
             <div class="error">

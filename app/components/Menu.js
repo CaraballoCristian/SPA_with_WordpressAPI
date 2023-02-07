@@ -5,12 +5,11 @@ export function Menu() {
     $menu.classList.add("menu");
     
     $menu.innerHTML = `
-        <a href="#/">Home</a>
-        <span></span>
-        <a href="#/search">Búsqueda</a>
-        <span></span>
-        <a href="#/contacto">Contacto</a>
-        <span></span>
+        <a href="#/">HOME</a>
+        <a href="#/posts">POSTS</a>
+        <a href="#/search">SEARCH</a>
+        
     `;
+    
     return $menu;
 }
