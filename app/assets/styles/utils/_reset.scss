@@ -1,5 +1,3 @@
-
-
 html{
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
@@ -26,24 +24,25 @@ a{
     padding:0;
 }
 
-
-//importante, para evitar bucles
+//menu current section 
 .selected{
-    background-color: blue;
     color: white;
-    width: 30%;
-    text-align: center;
     pointer-events: none;
 }
-
 img{
     max-width: 100%;
 }
 
+//hmmm cre oque no los uso a estos..
 .hidden{
     opacity: 0;
-
 }
 .visible{
     opacity: 1;
+}
+a:active{
+ color:#eee;
+}
+a:visited{
+    text-decoration: none;
 }

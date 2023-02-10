@@ -5,10 +5,7 @@ export async function ajax(props){
         .then(res => res.ok ? res.json() : Promise.reject(res))
         .then(json => cbSuccess(json))
         .catch(err => {
-            let msg = err.statusText || "Ocurrio un error al acceder a la API";
-            
-            //aca deberia poner el timeout
-            //document.querySelector(".loader").style.display = "none";
+            let msg = err.statusText || "Cannot connect to API";
 
             document.getElementById("main").innerHTML = `
             <div class="error">

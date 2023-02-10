@@ -1,21 +1,23 @@
 .home-section{
+    margin-top: -5rem;
+
     &-top{
-        border:solid white 1px;
-        height: calc(80vh - 5rem);
+        min-height: calc(95vh - 5rem);
         display: flex;
         justify-content: space-around;
         align-items: center;
 
-        &-text{
 
-            background-color: green;;
+        &-text{
             width: 35%;
             height: min(50%, 400px);
             padding:1rem;
         
             &-about{
                 color: #eee;
+                min-width: 400px;
                 font-size: clamp(1rem, .8rem + 3vw, 2rem);
+                font-size: clamp(.5rem, .5rem + 5vw, 2rem)  ;
                 letter-spacing: 1px;
                 line-height: 3rem;
             }
@@ -31,19 +33,22 @@
         }
     }
     
-    &-bottom{
+    &-bottom{   
+        min-height: 70vh;
 
-        border:solid red 1px;
-        height: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        
+        &-title{
+           margin-block: -3rem 1rem;
+            color: #eee;
+        }
 
         &-cardbox{
-            border: solid white 2px;
-            height: 70%;
-            width: 70%;
+            height: 85%;
+            padding-block:1rem;
         }
         
         &-btnbox{
@@ -60,4 +65,5 @@
             }
         }
     }
+
 }

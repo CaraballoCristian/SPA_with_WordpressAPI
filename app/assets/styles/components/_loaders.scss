@@ -104,7 +104,7 @@
 }
 
 .loader-search-card{
-    height: 170px;
+    height: 145px;
     width: 90%;
     background-color: rgba(255, 255, 255, .5);
     margin: 2rem auto;
@@ -116,7 +116,7 @@
 
         display: flex;
         
-        padding: 1rem .5rem 0;
+        padding: .5rem .5rem 0;
 
         & div{
             border-radius: 5px;
@@ -124,7 +124,7 @@
 
         .loader-search-card-author{
             margin: 0;
-            
+            height: 130px;
             width: max(20%, 200px);
             display: flex;
             flex-direction: column;
@@ -186,7 +186,7 @@
         
             &-link{
                 height: 1.2rem;
-                width: 15%;
+                width: max(15%,4rem);
                 margin-inline: auto 1rem;
             }
         }

@@ -18,12 +18,12 @@ export async function infiniteScroll() {
         if((scrollTop + clientHeight >= scrollHeight) && (location.hash !== "#/search")){
             api.page++;
 
-            if(!hash || hash === "#/posts"){
+            if(hash === "#/posts"){
                 section = ".posts-section";
                 apiURL = `${api. POSTS}&page=${api.page}`;
                 Component = PostCard;
-            }else if (hash.includes("#/search")) {/* 
-                let query = location.hash.replace("#/search?search=", ""); */
+                
+            }else if (hash.includes("#/search")) {
                 section = ".search-section";
                 apiURL = `${api.SEARCH}&page=${api.page}`;
                 Component = SearchCard;
@@ -35,14 +35,12 @@ export async function infiniteScroll() {
                 url: apiURL,
                 cbSuccess: async (posts) => {
                     let html = "";
-                    //console.log(posts.length)
 
                     for(let i = 0; i<posts.length; i++){
-                        if(!hash.includes("#/search")) html += Component(posts[i])
-                        
+                        if(!hash.includes("#/search")) html += Component(posts[i]);
                         else{
                             let id = posts[i]._embedded.self[0].author;
-                            //valido que solamente traiga post cuyos autores existan
+                            //only ask for posts with an author
                             if(id) {
                                 await ajax({
                                     url: `${api.USER}/${id}`,

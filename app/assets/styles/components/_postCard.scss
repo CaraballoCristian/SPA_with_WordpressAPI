@@ -21,7 +21,7 @@
     
     
     //postCard top
-    &__top{
+    &-top{
         min-height: 150px;
         //cover img
         &-img{
@@ -33,7 +33,7 @@
     
 
     //postCard bottom
-    &__bottom{
+    &-bottom{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -53,51 +53,24 @@
             margin: 0.5rem auto -1rem;
             
             //title
-            .post-card__title{
+            .post-card-title{
                 font-size: clamp(1rem, .3rem + .5vw, 1.5rem);
                 margin: 0;
             }
             
             //link "ver publicacion"
             
-            .post-card__link{
-                position: relative;
-                margin-left: auto;
-                border:blue thin solid;
-                border-radius: 10px;
-                padding: .2rem .5rem;
-                z-index: 2;
-                color:blue;
-                
-                &::after{ 
-                    content: "";
-                    width: 102%;
-                    height: 102%;
-                    position: absolute;
-                    top:-1%;
-                    left:-1%;
-                    transform: scale(0);
-                    background-color: blue;
-                    border-radius: 10px;
-                    transition: all .2s linear;
-                    z-index: -1;
-                    overflow: hidden;
-                }
-                &:hover{
-                    color:white;
-                }
-                &:hover::after{
-                    transition: all .5s ease;
-                    transform: scale(1);
-                }
-            }
+           
+           .post-card-link{
+               margin-left: auto;
+            } 
 
         }
 
 
 
         //author and date
-        .post-card__author{
+        .post-card-author{
             
             display: flex;
             justify-content: space-around;
@@ -106,23 +79,23 @@
             margin: 1rem auto 1rem;
             width: 90%;
             
-            &--img{
+            &-img{
                 border-radius: 50%;
                 width: 64px;
                 height: 64px;
                 margin-inline: .5rem;
             }
-            .post-card__figcaption {
+            .post-card-figcaption {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 
                 white-space: nowrap;
                 width: 80%;
-                &--h3{
+                &-h3{
                     margin-block: .5rem;
                 }
-                &--time{
+                &-time{
                     margin-bottom: .5rem;
                 }
             }

@@ -1,7 +1,7 @@
 import { CalculateDate } from "../helpers/calculate_date.js";
 
 export function HomeCard(props){
-    console.log(props)
+    //console.log(props)
     let {title, date, slug, _embedded, excerpt} = props,
         dateFormat = new Date(date).toLocaleString(),
         authorImg = _embedded.author[0].avatar_urls["96"]
@@ -17,20 +17,22 @@ export function HomeCard(props){
     let postDate = CalculateDate(new Date(date));
 
     return `
-        <article style="background: url(${urlCover})" class="home-card">
-            <div class="home-card-text">
-                <h2 class="home-card-text-title">${title.rendered}</h2>
-                <div class="home-card-text-par">${excerpt.rendered}</div>
+        <article class="home-card" data-slug="#/${slug}">
+            <div class="home-card-imgbox">
+                <img class="home-card-imgbox-img" src="${urlCover}" alt="">
             </div>
-            <div class="home-card-bottom">
-                <figure class="home-card-bottom-author">
-                    <img class="home-card-bottom-author-img" src="${authorImg}" alt="">
-                    <figcaption class="home-card-bottom-author-figcaption">
-                        <h3 class="home-card-bottom-author-figcaption-name">${authorName}</h3>
-                        <time class="home-card-bottom-author-figcaption-date" datetime="${dateFormat}">${postDate}</time>
+            <div class="home-card-container">
+                <div class="home-card-container-text">
+                    <h2 class="home-card-container-text-title">${title.rendered}</h2>
+                    <div class="home-card-container-text-par">${excerpt.rendered}</div>
+                </div>
+                <figure class="home-card-container-author">
+                    <img class="home-card-container-author-img" src="${authorImg}" alt="">
+                    <figcaption class="home-card-container-author-figcaption">
+                        <h3 class="home-card-container-author-figcaption-name">${authorName}</h3>
+                        <time class="home-card-container-author-figcaption-date" datetime="${dateFormat}">${postDate}</time>
                     </figcaption>
                 </figure>
-                <a class="home-card-bottom-link" href="#/${slug}">Ver Publicacion</a>
             </div>
         </article>
     `;

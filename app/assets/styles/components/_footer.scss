@@ -1,18 +1,26 @@
+@import "../utils/mixins";
+@import "../utils/variables";
 
 .footer{
     position:relative;
-    padding:0;
-    margin-top: 2rem;
-    height: calc(100vh - 5rem);
+
+    //reemplazar por mixin
     display: flex;
     flex-direction: column;
 
+    height: calc(100vh - 5rem);
+
+    padding:0;
+    margin-top: 2rem;
+    
+    text-align: center;
+
     &-top{
-        background-color: rgb(238, 238, 238, .8);
-        height: 50%;
+        min-height: 50%;
+        background-color: #ccc;                           //reemplazar por variables
     }
     &-bottom{
-        height: 50%;
-        background-color: rgb(51, 51, 51, .8);
+        min-height: 50%;
+        background-color: rgb(51, 51, 51, 1 );            //reemplazar por variables
     }
 }

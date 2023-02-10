@@ -1,5 +1,4 @@
 export function CalculateDate(date1) {
-    //obtener la diferencia en horas
     let difference = (new Date().getTime() - date1.getTime()) / 1000;
     difference /= 60;
     difference /= 60;

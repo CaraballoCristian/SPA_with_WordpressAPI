@@ -6,33 +6,33 @@ import { HomeCard } from "./HomeCard.js";
 import { Post } from "./Post.js";
 import { SearchCard } from "./SearchCard.js";
 import { relatedCard } from "./RelatedCard.js";
-import Loaders from "./Loaders.js";
-import { validateForm } from "../helpers/validate_forms.js";
+import Loaders from "./Skeletons.js";
 
-let query = "";
+let query = "",
+previo,
+bool;
 
 export async function Router(){
-    document.getElementById("root").style.backgroundImage = `radial-gradient(circle, rgba(0,0,0,0.44) 0%, rgba(0,0,0,0.80) 100%)`;
-    
+   document.getElementById("root")
+        .style.backgroundImage = `background-image: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%), 
+                                url("https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/12/css-tricks-logo-gradient-outline.png?fit=1024%2C512&ssl=1");`;
+
     const d = document,
         w = window,
-        $main = d.getElementById("main");      
+        $main = d.getElementById("main");
         
     let { hash } = w.location; 
 
-
-    /* 
-    d.querySelector(".loader").style.display = "block";  */
     if(!hash || hash === "#/"){
         
-        const $home = document.querySelector(".menu a[href='#/']");
-        $home.classList.add("selected");
-
-        console.log(api.HOME)
+        previo = "home"
+        const $homeLink = document.querySelector(".menu a[href='#/']");
+        $homeLink.classList.add("selected");
 
         await ajax({
             url: api.HOME,
             cbSuccess: (post) => {
+
                 const $home = d.createElement("section");
                 $home.classList.add("home-section");
                 
@@ -40,14 +40,12 @@ export async function Router(){
 
                 $home.innerHTML = Home($homeCard);
                 
-                setTimeout(() => {
-                    $main.appendChild($home); 
-                }, 1000);
+                $main.appendChild($home); 
             }
         });
 
     }else if(hash === "#/posts"){
-
+        previo = "posts"
         d.querySelector(".footer").style.display = "none";
 
         let $containerLoader;
@@ -63,14 +61,15 @@ export async function Router(){
             aux = d.querySelector(".skeleton-section");
         }
 
-        const $posts = document.querySelector(".menu a[href='#/posts']");
-        $posts.classList.add("selected");
+        const $postsLink = document.querySelector(".menu a[href='#/posts']");
+        $postsLink.classList.add("selected");
 
         await ajax({
             url: api.POSTS,
             cbSuccess: (posts) => {
                 let $container = d.createElement("section");
                 $container.classList.add("posts-section", "grid-fluid");
+
                 posts.forEach((post) => $container.innerHTML += PostCard(post));
                 
                 setTimeout(() => {
@@ -79,74 +78,84 @@ export async function Router(){
                 }, 1000);
             }
         });
-
     
-
     
     }else if (hash.includes("#/search")){
         d.querySelector(".footer").style.display = "none";
         
-        let $containerSearchLoader;
-        let aux;
-        
-        if(api.page === 1 && hash.includes("#/search?search=")){
-            $containerSearchLoader= d.createElement("section")
-            $containerSearchLoader.classList.add("search-section", "skeleton-section");
-            for(let i = 0; i < api.PER_PAGE; i++){
-                $containerSearchLoader.innerHTML += Loaders.searchCardLoader();
-            }
-            $main.appendChild($containerSearchLoader);
-            aux = d.querySelector(".skeleton-section");
-        }
+        const $searchLink = document.querySelector(".menu a[href='#/search']");
+        $searchLink.classList.add("selected");
 
-        /* if(1 === 1){
-            console.log("lel")
-            const $busqueda = document.querySelector(".menu a[href='#/search']");
-            $busqueda.classList.add("selected");
-
-            let $containerSearch = document.createElement("div");
-            $containerSearch.innerHTML = Loaders.postLoader();
-            $main.appendChild($containerSearch);
+        //----------------------------------------------------------------
+        //empty search
+        if(hash === "#/search?search=") {
+            let warn = d.createElement("h2");   
+            warn.classList.add("warn");
+            warn.innerHTML = `<h2 class="warn">Please, search something!<h2/>`
+            $main.removeChild(aux);
+            $main.appendChild(warn)
             return;
-        } */
-
-        const $busqueda = document.querySelector(".menu a[href='#/search']");
-        $busqueda.classList.add("selected");
-        
-        if(!hash.includes("#/search?search=")) {
-            if(query) {
-                location.hash = `#/search?search=${query}`
-                return;
-            }
-        } 
-        else {
+        }
+        //normal search
+        else if(hash.includes("#/search?search=")) {
             query = location.hash.replace("#/search?search=", "");
+            previo = "search";
+        }
+        //just entering search tab or recovering last search data
+        else {
+            //just entering section
+            if(!query) return;
+
+            //recovering last search data 
+            //IMPORTANTE!! luego de una busqueda, si se va hacia adelante, y luego 2 hacia atras, al ir hacia adelante again, se pierde el next de la busquda
+            //QUERY to POST back QUERY back SEARCH to QUERY (aca deberia estar el post en next, pero nop)
+            //IMPORTANTE 2!! Al ir desde HOME a SEARCH y QUERY.. y luego volver a SEARCH Y HOME.. Al darle hacia adelante, salta search y va a QUERY
+            //de momento me conformo con esto e iré pensando como solucionarlo en el futuro
+            else if(query && previo !== "search") {
+                previo = "search";
+                location.hash = `#/search?search=${query}`   
+            }
+            return;
         }
      
-        d.querySelector(".search-form input").value = query ? query : "";
-
-        if(!query) d.querySelector(".loader").style.display = "none";
+        d.querySelector(".search-form input").value = query;
 
         d.addEventListener("search", e => {
             if(!e.target.matches("input[type='search']")) return;
             if(!e.target.value) {
-                window.location.hash = "#/";
+                window.location.hash = "#/search";
                 query = ""
             }
         })
 
-        if(!query) return;
+        let $containerSearchLoader,
+            aux;
         
-        //-----------------------------------------------------------------
+        //lazy loading
+        if(api.page === 1 && query){
+            $containerSearchLoader= d.createElement("section")
+            $containerSearchLoader.classList.add("search-section", "skeleton-section");
+
+            for(let i = 0; i < api.PER_PAGE; i++){
+                $containerSearchLoader.innerHTML += Loaders.searchCardLoader();
+            }
+
+            $main.appendChild($containerSearchLoader);
+            aux = d.querySelector(".skeleton-section");
+        }
+
+        
+        //--------------------------------------------------------------
         await ajax({
             url: `${api.SEARCH}${query}`,
             cbSuccess: async (search) => {
+                console.log("query is " + query)
+
+                let $containerSearch = d.createElement("section");
+                $containerSearch.classList.add("search-section");
                 
                 if(search.length !== 0) { 
-                    let $containerSearch = d.createElement("section");
-                    $containerSearch.classList.add("search-section");
                     
-
                     for(let i = 0; i<search.length; i++){
                          let id = search[i]._embedded.self[0].author;
                         if(id) {
@@ -162,13 +171,18 @@ export async function Router(){
                         $main.appendChild($containerSearch);
                     }, 1000);
                     
-                }else $main.innerHTML = ` <h2>No se encontraron resultados para: <mark>${query}</mark><h2/>`
+                }else {
+                    $containerSearch.innerHTML = `<h2 class="warn">Sorry, we couldn't find matches for: <mark> ${query} </mark><h2/>`
+                    $main.removeChild(aux);
+                    $main.appendChild($containerSearch)
+                }
             }
         })
 
-        d.querySelector(".search-form input").value = query ? query : "";
 
     }else {
+        
+        previo = "post"
         let $htmlLoader = d.createElement("section");
         $htmlLoader.innerHTML = Loaders.postLoader();
         $htmlLoader.classList.add("post-section", "skeleton-section");

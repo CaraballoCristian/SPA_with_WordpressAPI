@@ -11,7 +11,7 @@
     flex-direction: column;
     width:100%;
 
-    .post-section__header{  
+    .post-section-header{  
         display: flex;
         justify-content: center;
         gap:3rem;
@@ -20,7 +20,7 @@
         width:100%;
         margin: 2rem auto;
         
-        &--left{
+        &-left{
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -63,16 +63,16 @@
                 }
             }
         }
-        &--right{
+        &-right{
             width: 20%;
         }
     }
 
-    .post-section__content{
+    .post-section-content{
         display: flex;
         justify-content: center;
         
-        &--main{
+        &-main{
             background-color: rgba(255, 255, 255, .8);
             border-radius: 10px;
             width: min(60%, calc(1150px - 4rem));
@@ -90,6 +90,7 @@
             //para centrar elementos traidos por fetch
             & figure{
                 text-align: center;
+                max-width: 100%;
             }
             //para darle estilos a los fragmentos de codigo
             & pre{
@@ -108,18 +109,16 @@
             }
         }
         
-        &--aside{
+        &-aside{
             margin-inline: 1.5rem;
             position:relative;
             
             width:20%;
 
             border-left:solid 3px  rgba(255, 255, 255, .8);
-                min-width: 300px;
+            min-width: 300px;
 
-           
-    
-            .aside-posts{
+           &-slider{
                 position:sticky;
                 top: 7rem;
 
@@ -128,85 +127,90 @@
                 margin-inline:auto;
 
                 text-align: center;
-                
-                &-title{
-                    margin:0;
+
+                &-title  {
                     color:rgba(255, 255, 255, .8);
                 }
-            } 
+
+                &-container{
+
+                    &-cards{
+                        //aca adentro estan las multiples cartas
+                    }
+                }
+
+           }
         }
     }
-    
-    
-   
 }
 
 @media screen and (max-width: 1200px) {
     .post-section{
 
-        .post-section__header{
+        &-header{
             width: 100%;
             padding-inline:1rem;
-            &--left{
+            &-left{
                 width: 100%;
             }
-            &--right{
+            &-right{
                 display: none;
             }
         }
         
-        .post-section__content{
+        .post-section-content{
             width: 100%;
             padding-inline:1rem;
             flex-direction: column;
-
             
-
-            &--main{
+            &-main{
                 width: calc(100% - 2rem);
 
             }
 
-            &--aside{
-                overflow-y: hidden;
-                width: 100%;
-                height: 300px;
-                margin-inline:auto;
-                border:none;
-                padding:0;
-                margin:0;
-                
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                
-                overflow-x: auto;
-                
-                margin-block: 1rem;
-                
-                scrollbar-width: none;
-                
-                &::-webkit-scrollbar{
-                    display: none;
-                }
-                
-                .aside-posts{
-                    margin: 0;
-                    width: fit-content;
-                    
+            &-aside{
+                width: calc(100% - 2rem);
+                height: 700px;
+                margin-top: 2rem;
+                border-left: none;
+
+                &-slider{
+                    position: unset;
+            
                     &-title{
-                        align-self: center;
+                        margin-inline:auto;
                         font-size: 2rem;
                     }
-                    &-cards{
-                        padding-inline:2rem;
-                        border-block: 2px solid rgba(255, 255, 255, .8);
-                        display: flex;
-                        justify-content: flex-start;
 
-                          
+                    &-container{
+                        padding:2rem 0;
+                        border-block: 4px solid rgba(255, 255, 255, .8);
+                        overflow-x: auto;
+                        width: min(1100px, 100%);
+                        margin-inline:auto;
+
+                        scrollbar-width: none;
+                
+                        &::-webkit-scrollbar{
+                            display: none;
+                        }
+
+                        &-cards{
+                            display: flex;
+                            width: fit-content;
+                            margin-inline:auto;
+                        }
                     }
                 }
+
+    
+
+                   
+            
+
+              
+                    
+                
             }
         }
     }

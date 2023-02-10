@@ -6,11 +6,44 @@
     width: min(100%, 1200px);
     margin-inline:auto;
 }
-.search-section{
-    width: min(100%, 1200px);
-    margin-inline:auto;
+
+.search-header{
+    position: sticky;
+    top: 5rem;
+
+    background-color: rgba(0  0  0 / 0.5);
+
+    z-index: 90;
     
+    & form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: min(100%, 900px);
+        height: 4rem;
+        
+        margin-inline: auto;
+        
+        
+
+        & input{
+            width: min(90%, 500px);
+            padding: .5rem 1rem;
+            border-radius: 5px;
+
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+
 }
+.search-section{
+    width: min(100%, 900px);
+    margin-inline:auto; 
+}
+
 .post-section{
     width: 100%;
 

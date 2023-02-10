@@ -5,11 +5,10 @@ export function Menu() {
     $menu.classList.add("menu");
     
     $menu.innerHTML = `
+        <div id="marker"></div>
         <a href="#/">HOME</a>
         <a href="#/posts">POSTS</a>
         <a href="#/search">SEARCH</a>
-        
     `;
-    
     return $menu;
 }

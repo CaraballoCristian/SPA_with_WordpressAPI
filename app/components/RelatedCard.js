@@ -9,7 +9,6 @@ export function relatedCard(props){
         if(title.rendered.length > 30) titleFormat = title.rendered.slice(0,50) + " ...";
         else titleFormat = title.rendered;
 
-
 return `
     <article class="related-card" data-slug="#/${slug}">
         <figure>

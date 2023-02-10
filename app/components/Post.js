@@ -1,5 +1,4 @@
 import { getCard } from "../helpers/getCard.js";
-import { Form } from "./Form.js";
 
 export function Post(props, related, author){
     let {content, title, date} = props,
@@ -19,11 +18,10 @@ export function Post(props, related, author){
 
     return `
     <section class="post-section">
-
-        <div class="post-section__header">
-            <div class="post-section__header--left">
+        <div class="post-section-header">
+            <div class="post-section-header-left">
                 <h2>${title.rendered}</h2>
-                <figure class="post-section__header--left-author">
+                <figure class="post-section-header-left-author">
                     <img src="${authorImg}" alt="author">
                     <div>
                         <h3>${author.name}</h3>
@@ -31,18 +29,19 @@ export function Post(props, related, author){
                     </div>    
                 </figure>            
             </div>
-            <div class="post-section__header--right"></div>
+            <div class="post-section-header-right"></div>
         </div>
-
-        <div class="post-section__content">
-            <article class="post-section__content--main">
+        <div class="post-section-content">
+            <article class="post-section-content-main">
                 ${content.rendered}
             </article>
-            <aside class="post-section__content--aside">
-                <div class="aside-posts">
-                    <h3 class="aside-posts-title">Related Posts</h3>
-                    <div class="aside-posts-cards">
-                        ${related}
+            <aside class="post-section-content-aside">
+                <div class="post-section-content-aside-slider">
+                    <h3 class="post-section-content-aside-slider-title">Related Posts</h3>
+                    <div class="post-section-content-aside-slider-container">
+                        <div class="post-section-content-aside-slider-container-cards">
+                            ${related}
+                        </div>
                     </div>
                 </div>
             </aside>

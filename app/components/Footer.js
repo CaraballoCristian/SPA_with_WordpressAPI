@@ -6,7 +6,6 @@ export function Footer(){
 
     $footer.innerHTML = `
         <div class="footer-top">    
-            
         </div>
         <div class="footer-bottom">    
             ${Form()}
