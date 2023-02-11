@@ -1,7 +1,7 @@
 import { CalculateDate } from "../helpers/calculate_date.js";
 
 export function PostCard(props){
-    let {title, date, slug, _embedded} = props,
+    let {title, date, slug, _embedded, excerpt} = props,
         dateFormat = new Date(date).toLocaleString(),
         authorImg = _embedded.author[0].avatar_urls["48"]
             ? _embedded.author[0].avatar_urls["48"]
@@ -14,28 +14,36 @@ export function PostCard(props){
             : "app/assets/img/dummy-cover.png";
 
     let postDate = CalculateDate(new Date(date));
-
     return `
         <article  class="post-card">
-            <div class="post-card-top">
-                <img class="post-card-top-img"src="${urlCover}"" alt="">
-            </div>      
+            
+            <div class="post-card-front">
+                <div class="post-card-front-top">
+                    <img class="post-card-front-top-img"src="${urlCover}"" alt="">
+                </div>      
 
-            <div class="post-card-bottom">
-                <div class="post-card-bottom-text">
-                    <h2 class="post-card-title">${title.rendered}</h2>
-                    <a class="post-card-link btn" href="#/${slug}">Read More!<span>
+                <div class="post-card-front-bottom">
+                    <div class="post-card-front-bottom-text">
+                        <h2 class="post-card-front-title">${title.rendered}</h2>
+                    </div>
+                    <figure class="post-card-front-author">
+                        <img class="post-card-front-author-img" src="${authorImg}" alt="">
+                        <figcaption class="post-card-front-figcaption">
+                            <h3 class="post-card-front-figcaption-h3">${authorName}</h3>
+                            <time class="post-card-front-figcaption-date" datetime="${dateFormat}">${postDate}</time>
+                        </figcaption>
+                    </figure>
+                </div> 
+            </div> 
+            <div class="post-card-back"> 
+                <div class="post-card-back-text">
+                    ${excerpt.rendered}
+                </div>
+                <a class="post-card-back-link btn" href="#/${slug}">Read More!<span>
                     <img src="app/assets/img/next.png">
                 </span></a>
-                </div>
-                <figure class="post-card-author">
-                    <img class="post-card-author-img" src="${authorImg}" alt="">
-                    <figcaption class="post-card-figcaption">
-                        <h3 class="post-card-figcaption-h3">${authorName}</h3>
-                        <time class="post-card-figcaption-date" datetime="${dateFormat}">${postDate}</time>
-                    </figcaption>
-                </figure>
-            </div > 
+            </div> 
+
         </article>
     `;
 }

@@ -8,4 +8,3 @@ window.addEventListener("hashchange", e => {
     api.page = 1;
     App();
 });
-

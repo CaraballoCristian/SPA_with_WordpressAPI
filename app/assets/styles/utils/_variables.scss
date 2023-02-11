@@ -1,67 +1,6 @@
+//utilizar custom properties, para facilitar el dark mode
 //---------------COLORS----------------
-$primary: #eee;
-$primary-dark: darkblue;
-$primary-light: darkblue;
 
-$secondary: green;
-$secondary-dark: darkgreen;
-$secondary-light: darkgreen;
 
-//definimos la paleta d colores (el map) en el mismo partial
-$colors: (
-	"pclr": $primary,
-	"pclr-d": $primary-dark,
-	"pclr-l": $primary-light,
-
-	"sclr": $secondary,
-	"sclr-d": $secondary-dark,
-	"sclr-l": $secondary-light,
-);
-
+//utilizar sass variables para agilizar escritura "var.$ff-primary"
 //----------------FONTS-------------------
-$ffp: blue;
-$ffp-b: darkblue;
-$ffp-i: darkblue;
-
-$ffs: blue;
-$ffs-b: darkblue;
-$ffs-i: darkblue;
-
-//definimos la paleta d colores (el map) en el mismo partial
-$fonts: (
-	"primary": $ffp,
-	"primady-b": $ffp-b,
-	"primady-i": $ffp-i,
-
-	"secondary": $ffs,
-	"secondary-b": $ffs-b,
-	"secondary-i": $ffs-i,
-);
-
-//--------------------PADDINGS--------------------
-
-$p1: .5rem;
-$p2: 1rem;
-$p3: 2rem;
-$p4: 5rem;
-
-$paddings: (
-    "p1" : $p1,
-    "p2" : $p2,  
-    "p3" : $p3, 
-    "p4" : $p4,
-);
-    
-//---------------------MARGINS---------------------
-
-$m1: .5rem;
-$m2: 1rem;
-$m3: 2rem;
-$m4: 4rem;
-
-$margins: (
-"m1" : $m1,
-"m2" : $m2,  
-"m3" : $m3, 
-"m4" : $m4,
-);

@@ -1,0 +1,58 @@
+.hamb-menu-btn {
+  position: relative;
+  align-self: center;
+  height: clamp(1.5rem, 1rem + 3vw, 2.5rem);
+  aspect-ratio: 1/1;
+  margin-left: 1rem;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 2px;
+  border: none;
+  display: none;
+}
+.hamb-menu-btn div {
+  height: 15%;
+  border-radius: 2px;
+  width: 100%;
+  background-color: #eee;
+}
+.hamb-menu-btn-top {
+  position: absolute;
+  top: 0;
+  bottom: unset;
+  left: unset;
+  right: unset;
+  z-index: unset;
+}
+.hamb-menu-btn-middle-top {
+  position: absolute;
+  top: 50%;
+  bottom: unset;
+  left: unset;
+  right: unset;
+  z-index: unset;
+  transform: translate(0, -50%);
+}
+.hamb-menu-btn-middle-bottom {
+  position: absolute;
+  top: 50%;
+  bottom: unset;
+  left: unset;
+  right: unset;
+  z-index: unset;
+  transform: translate(0, -50%);
+}
+.hamb-menu-btn-bottom {
+  position: absolute;
+  top: unset;
+  bottom: 0;
+  left: unset;
+  right: unset;
+  z-index: unset;
+}
+
+@media screen and (max-width: 900px) {
+  .hamb-menu-btn {
+    display: block;
+  }
+}/*# sourceMappingURL=hambMenu.css.map */

@@ -1,21 +1,21 @@
 const postCardLoader = () => {
     return `
     <article  class="loader-post-card">
-        <div class="loader-post-card__top">
-            <div class="loader-post-card__img skeleton"></div>
+        <div class="loader-post-card-top">
+            <div class="loader-post-card-top-img skeleton"></div>
         </div>      
 
-        <div class="loader-post-card__bottom">
-            <div class="loader-post-card__bottom-text">
-                <div class="loader-post-card__title skeleton"></div>
-                <div class="loader-post-card__title2 skeleton"></div>
-                <div class="loader-post-card__link skeleton"></div>
+        <div class="loader-post-card-bottom">
+            <div class="loader-post-card-bottom-text">
+                <div class="loader-post-card-bottom-text-title skeleton"></div>
+                <div class="loader-post-card-bottom-text-title2 skeleton"></div>
+                <div class="loader-post-card-bottom-text-link skeleton"></div>
             </div>
-            <div class="loader-post-card__author">
-                <div class="loader-post-card__author--img skeleton">
-                <div class="loader-post-card__figcaption">
-                    <div class="loader-post-card__figcaption--h3 skeleton"></div>
-                    <div class="loader-post-card__figcaption--date skeleton" datetime=""></div>
+            <div class="loader-post-card-bottom-author">
+                <div class="loader-post-card-bottom-author-img skeleton">
+                <div class="loader-post-card-bottom-author-figcaption">
+                    <div class="loader-post-card-bottom-author-figcaption-h3 skeleton"></div>
+                    <div class="loader-post-card-bottom-author-figcaption-date skeleton" datetime=""></div>
                 </div>
             </div>
         </div > 
@@ -26,17 +26,17 @@ const searchCardLoader = () => {
     return `
     <article class="loader-search-card">
         <div class="loader-search-card-body">
-            <div class="loader-search-card-author">
-                <div class="loader-search-card-author-img skeleton"></div>
-                <div class="loader-search-card-author-text">
-                    <div class="loader-search-card-author-text-name skeleton"></div>
-                    <div class="loader-search-card-author-text-date skeleton"></div>
+            <div class="loader-search-card-body-author">
+                <div class="loader-search-card-body-author-img skeleton"></div>
+                <div class="loader-search-card-body-author-text">
+                    <div class="loader-search-card-body-author-text-name skeleton"></div>
+                    <div class="loader-search-card-body-author-text-date skeleton"></div>
                 </div>
             </div>
-            <div class="loader-search-card-content">
-                <div class="loader-search-card-content-title skeleton"></div>
-                <div class="loader-search-card-content-subtitle skeleton"></div>
-                <div class="loader-search-card-content-link skeleton"></div>
+            <div class="loader-search-card-body-content">
+                <div class="loader-search-card-body-content-title skeleton"></div>
+                <div class="loader-search-card-body-content-subtitle skeleton"></div>
+                <div class="loader-search-card-body-content-link skeleton"></div>
             </div>
         </div>
     </article>

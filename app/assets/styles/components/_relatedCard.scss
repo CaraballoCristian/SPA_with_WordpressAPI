@@ -1,74 +1,81 @@
+@import "../utils/mixins";
+@import "../utils/variables";
 .related-card{
     margin-left: 1rem;
     & figure{
         position:relative;
+
+        @include flex(row, space-between);
+
         width: 100%;
         height: 60px;
-        margin: 1rem 0 0;
-        transition: all 300ms ease-in-out;
 
-        display: flex;
-        justify-content: space-between;
-        background-color: rgba(255, 255, 255, .8);
+        margin: 1rem 0 0;
+ 
+        background-color: rgba(255, 255, 255, .8);                   //color variable
+        
         border-radius: 10px;
+
+        transition: all .3s ease-in-out;
+        
         overflow: hidden;
 
         & figcaption{
-            text-align: start;
+            @include flex(column, space-between);
+
             width: 80%;
+            
             padding: 0 .5rem .5rem 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            
+            text-align: start;
 
             & h4{
                 margin:.5rem 0 0;
-                font-size: calc(.3rem + .5vw);
+
+                font-size: calc(.3rem + .5vw);                          //CLAMP IT!
             }
             & time{
-                
-                font-size: calc(.3rem + .5vw);
+                font-size: calc(.3rem + .5vw);                          //CLAMP IT!
             }
         }
         & img{
             max-width:20%;
+
             object-fit: cover;
         }
-        
-        
-
         &:hover{
             cursor: pointer;        
-            transform: translateX(1rem);
-            
+
+            transform: translateX(1.5rem);
         }
     }
-
-
 }
 @media screen and (max-width: 1200px) {
     .related-card{
-        transition: all 200ms ease-in-out;
-        display: flex;
-        justify-content: start;
+        @include flex(row, start);
+
         margin: 0;
         
+        transition: all 200ms ease-in-out;
+        
         & figure{
-            background-color: #eee;
-            box-shadow: -1rem 0px 2rem #000;
-            height: 250px;
-            width: 200px;
             flex-direction: column-reverse;
 
+            height: 250px;
+            width: 200px;
+            
             margin: .5rem 0;
-
             padding-inline:0;
+            
+            background-color: #eee;                                                 //VARIABLE COLORS
+            box-shadow: -1rem 0px 2rem #000;                                       //VARIABLE SHADOWS
+
             & figcaption{
+                @include flex(column, space-between);
+
                 width: 100%;
                 height: 50%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+                
                 padding: 0 1rem 1rem;
             }
             & img{
@@ -79,11 +86,13 @@
         &:hover{
             transform-origin: 100% 0;
             transform: rotate(5deg);
+
             z-index: 1;
         }
         &:hover~.related-card{
-            z-index: 2;
             transform: translateX(1rem);
+            
+            z-index: 2;
         }
         &:not(:first-child){
             margin-left: -2rem;

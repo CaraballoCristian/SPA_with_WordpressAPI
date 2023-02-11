@@ -17,31 +17,14 @@ html{
     -ms-user-select: none;
     user-select: none; 
 }
-
 a{
-    text-decoration: none;
     margin:0;
     padding:0;
-}
 
-//menu current section 
-.selected{
-    color: white;
-    pointer-events: none;
+    text-decoration: none;
 }
 img{
     max-width: 100%;
-}
-
-//hmmm cre oque no los uso a estos..
-.hidden{
-    opacity: 0;
-}
-.visible{
-    opacity: 1;
-}
-a:active{
- color:#eee;
 }
 a:visited{
     text-decoration: none;

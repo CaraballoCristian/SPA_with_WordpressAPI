@@ -1,0 +1,47 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.hamb-menu-btn{ 
+    position: relative;
+
+    align-self: center;
+    
+    height: clamp(1.2rem, 1rem + 3vw, 2rem);
+    aspect-ratio: 1 / 1;
+    
+    margin-left:1rem;
+    padding: 0;
+    
+    background-color: transparent;
+    
+    border-radius: 2px;
+    border: none;
+
+    display: none;
+
+    & div{
+        height: 15%;
+        border-radius: 2px;
+        width: 100%;
+        background-color: #eee;                                              //COLORS VARIABLE
+    }
+    &-top{
+        @include position(absolute, 0);
+    }
+    &-middle-top{
+        @include position(absolute, 50%);
+        transform: translate(0, -50%);
+    }
+    &-middle-bottom{
+        @include position(absolute, 50%);
+        transform: translate(0, -50%);
+    }
+    &-bottom{
+        @include position(absolute, unset, 0);
+    }
+ }
+ @media screen and (max-width: 900px) {
+    .hamb-menu-btn{
+        display: block;
+    }
+}

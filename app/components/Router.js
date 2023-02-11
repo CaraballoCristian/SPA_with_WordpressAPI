@@ -9,13 +9,13 @@ import { relatedCard } from "./RelatedCard.js";
 import Loaders from "./Skeletons.js";
 
 let query = "",
-previo,
-bool;
+previo;
 
 export async function Router(){
-   document.getElementById("root")
+
+/*    document.getElementById("root")
         .style.backgroundImage = `background-image: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%), 
-                                url("https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/12/css-tricks-logo-gradient-outline.png?fit=1024%2C512&ssl=1");`;
+                                url("https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/12/css-tricks-logo-gradient-outline.png?fit=1024%2C512&ssl=1");`; */
 
     const d = document,
         w = window,
@@ -221,7 +221,7 @@ export async function Router(){
                 }
 
                 setTimeout(() => {
-                    $main.innerHTML = Post(post[0], htmlRelated, author);
+                   $main.innerHTML = Post(post[0], htmlRelated, author);
                 }, 3000);
             }
        })

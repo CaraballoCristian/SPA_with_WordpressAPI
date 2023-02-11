@@ -1,5 +1,7 @@
 @import "./utils/reset";
+@import "./utils/utilities";
 @import "./components/header";
+@import "./components/hambMenu";
 @import "./components/main";
 @import "./components/postCard";
 @import "./components/searchCard";
@@ -12,92 +14,3 @@
 @import "./components/Home";
 @import "./components/homeCard";
 
-#root{
-}
-.loader{
-    margin: 0 auto;
-    height: 4rem;
-    width: 4rem;
-}
-
-.error {
-    padding: 1rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    background-color: #dc3545;
-}
-.warn{
-    padding: 1rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;    
-}
-
-.btn{
-    border:solid #333 2px;
-    padding: .5rem 1rem .5rem 2.5rem;
-    border-radius: 50vh;
-    position:relative;
-    transition: all .5s ease;
-    width: 150px;
-    height: 40px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color:#333;
-    font-weight: bold;
-
-    overflow: hidden;
-    & span{
-        position: absolute;
-        left: 2px;
-        top: 2px;
-        height: calc(100% - 4px);
-        aspect-ratio: 1 / 1;
-        
-        border-radius: 50%;
-        background-color: #eee;
-        transition: all .5s ease;
-
-        display: grid;
-        place-content: center;
-
-        
-    }
-    
-    &::before{
-        content:"";
-        position: absolute;
-        top:0;
-        bottom:0;
-        left:0%;
-        width: 0;
-        height: 100%;
-        background-color: rgba(51, 51, 51, 0.5);
-        transition: all .5s ease;
-        z-index: -1;
-    }
-    &:hover::before{
-        width: 100%;
-        
-    }
-
-    &:hover{
-        color:#eee;
-        padding-inline: 1rem 2.5rem;
-        & span{
-            
-            transform: translateX(150px - 40px);
-        }
-    }
-}
-    
-#btn-github,
-#btn-linkedin{
-    cursor: pointer;
-}

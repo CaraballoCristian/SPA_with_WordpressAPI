@@ -10,7 +10,14 @@ export function SearchForm() {
         $input.placeholder = "Search...";
         $input.autocomplete = "off";
         
+    const $btn = d.createElement("button");
+        $btn.innerHTML = `
+            <img src="app/assets/img/search.png">
+        `;
+        $btn.classList.add("search-btn")
+
         $form.appendChild($input);
+        $form.appendChild($btn);
 
         d.addEventListener("submit", e =>{
             if(!e.target.matches(".search-form")) return;

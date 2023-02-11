@@ -4,9 +4,7 @@
 .footer{
     position:relative;
 
-    //reemplazar por mixin
-    display: flex;
-    flex-direction: column;
+    @include flex(column);
 
     height: calc(100vh - 5rem);
 

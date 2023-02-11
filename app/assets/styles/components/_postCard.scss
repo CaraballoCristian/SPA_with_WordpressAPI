@@ -2,104 +2,130 @@
 @import "../utils/variables";
 
 .post-card{
+    @include flex(column, space-between, center);
+    position: relative;
+    
     height: 350px;
-    margin: 1rem auto;
     width: 90%;
-    max-width: 300px;
-    background-color: rgba(255, 255, 255, .5);
+    max-width: 300px;   
+
+    margin: 1rem auto;
+    
+    background-color: transparent;
+    
     backdrop-filter: blur(5px);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
     border-radius: 10px;
+
     overflow: hidden;
-    
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);
-    
-    
-    //postCard top
-    &-top{
-        min-height: 150px;
-        //cover img
-        &-img{
-            height: 100%;
-            object-fit: cover;
-        }
+
+    &:hover{
+        cursor: pointer;
+    }
+
+
+    backface-visibility: hidden !important;         //no funciona!
+
+    &-front{
         overflow: hidden;
-    }   
-    
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);                     //shadow variable
+        transform: rotateY(0deg);
+        @include position(absolute, 0, 0, 0, 0);
+        z-index: 2;
 
-    //postCard bottom
-    &-bottom{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: .5rem;
-        height: 100%;
-        min-width: 100%;
+        background-color: rebeccapurple;
+        
+        transition: all .5s linear;
 
-        //h2 text
-        &-text{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            width: 90%;
-            height: 60%;
-            
-            margin: 0.5rem auto -1rem;
-            
-            //title
-            .post-card-title{
-                font-size: clamp(1rem, .3rem + .5vw, 1.5rem);
-                margin: 0;
-            }
-            
-            //link "ver publicacion"
-            
-           
-           .post-card-link{
-               margin-left: auto;
-            } 
-
-        }
-
-
-
-        //author and date
-        .post-card-author{
-            
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            
-            margin: 1rem auto 1rem;
-            width: 90%;
+        &-top{
+            height: 150px;
             
             &-img{
-                border-radius: 50%;
-                width: 64px;
-                height: 64px;
-                margin-inline: .5rem;
+                height: 100%;
+                width: fit-content;
             }
-            .post-card-figcaption {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+            overflow: hidden;
+        }   
+        &-bottom{
+            @include flex(column, space-between);
+            gap: .5rem;
+    
+            height: 55%;
+            min-width: 100%;
+    
+            &-text{
+                @include flex(column, space-between);
+    
+                width: 90%;
+                height: 60%;
                 
-                white-space: nowrap;
-                width: 80%;
-                &-h3{
-                    margin-block: .5rem;
-                }
-                &-time{
-                    margin-bottom: .5rem;
+                margin: 0.5rem auto -1rem;
+                
+                //title
+                .post-card-front-title{
+                    margin: 0;
+    
+                    font-size: clamp(1rem, .5rem + .5vw, 1.7rem);                             //corregir
                 }
             }
-            
+            .post-card-front-author{
+                @include flex(row, space-around, center);
+                
+                width: 90%;
+    
+                margin: 1rem auto 1rem;
+                
+                &-img{
+                    width: 64px;
+                    height: 64px;
+    
+                    margin-inline: .5rem;
+                    
+                    border-radius: 50%;
+                }
+                .post-card-front-figcaption {
+                    @include flex(column, center);
+                    
+                    width: 80%;
+    
+                    white-space: nowrap;
+                    &-h3{
+                        margin-block: .5rem;
+                    }
+                    &-time{
+                        margin-bottom: .5rem;
+                    }
+                }
+            }
         }
+    }
+    &-back{
+        overflow: hidden;
+        border-radius: 10px;
+        transform:  rotateY(180deg);
+        @include position(absolute, 0, 0, 0, 0);
+        z-index: 1;
+
+        background-color: salmon;
+        
+        transition: all .5s linear;
+
+        &-text{
+
+        }
+        &-link{
+
+        }
+    }
+
+    &:hover .post-card-front{
+        transform: rotateY(180deg);
+        z-index: 1;
+    }
+    &:hover .post-card-back{
+        transform: rotateY(360deg);
+        z-index: 2;
+
     }
 }

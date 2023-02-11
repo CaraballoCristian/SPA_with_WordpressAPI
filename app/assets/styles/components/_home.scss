@@ -1,12 +1,13 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
 .home-section{
     margin-top: -5rem;
 
     &-top{
+        @include flex(row, space-around, center);
+        
         min-height: calc(95vh - 5rem);
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-
 
         &-text{
             width: 35%;

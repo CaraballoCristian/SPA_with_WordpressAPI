@@ -1,6 +1,11 @@
+import { AnimationMenu } from "./AnimationMenu.js";
 import { animationSearch } from "./AnimationSearch.JS";
 
 export function Animations(){
+    //menu hamburguer..........SE ROMPE EN EL RESIZE
+    
+    AnimationMenu();
+
     //Search scroll animations
     if(location.hash.includes("#/search")) animationSearch();
 
@@ -8,7 +13,7 @@ export function Animations(){
     gsap.to(".form",{duration: 2, y: "-3%",repeat:-1, yoyo:true, ease:"linear"})
 
     //Transparent header on home's top
-    if(location.hash === "#/"){
+    if(location.hash === "#/" || !location.hash){
         const $header = document.querySelector(".header");
         
         if(window.scrollY === 0) {
@@ -25,4 +30,6 @@ export function Animations(){
             }
         })
     }
-}
+
+    
+};

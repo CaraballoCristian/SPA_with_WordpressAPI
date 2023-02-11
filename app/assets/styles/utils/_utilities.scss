@@ -1,0 +1,95 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
+.loader{
+    height: 4rem;
+    width: 4rem;
+
+    margin: 0 auto;
+}
+.error {
+    padding: 1rem;
+
+    text-align: center;
+    
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+    background-color: #dc3545;                                     //variable colors
+    color: #fff;                                                   //variable colors
+}
+.warn{
+    padding: 1rem;
+
+    text-align: center;
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    
+    color: #fff;                                                //variable colors    
+}
+.btn{
+    position:relative;
+
+    @include flex(row, center, center);
+
+    width: 150px;
+    height: 40px;
+    
+    padding: .5rem 1rem .5rem 2.5rem;
+    
+    color:#333;                                        // variable colors
+    border:solid #333 2px;                             //usar variable ya que tiene que matchear con el color de letra
+    border-radius: 50vh;
+    
+    font-weight: bold;
+    
+    transition: all .5s ease;
+
+    overflow: hidden;
+    & span{
+        @include position(absolute, 2px, unset, 2px);
+        position: absolute;
+        left: 2px;
+        top: 2px;
+
+        display: grid;
+        place-content: center;
+
+        height: calc(100% - 4px);
+        aspect-ratio: 1 / 1;
+        
+        border-radius: 50%;
+        
+        background-color: #eee;                                 //variable colors
+        
+        transition: all .5s ease;
+    }
+    
+    &::before{
+        content:"";
+        @include position(absolute, 0, 0, 0, unset, -1);
+
+        width: 0;
+        height: 100%;
+
+        background-color: rgba(51, 51, 51, 0.5);                      //variable colors
+
+        transition: all .5s ease;
+    }
+    &:hover::before{
+        width: 100%;
+    }
+    &:hover{
+        color:#eee;                                                  //variable colors
+
+        padding-inline: 1rem 2.5rem;
+        & span{
+            transform: translateX(150px - 40px);
+        }
+    }
+}   
+#btn-github,
+#btn-linkedin{
+    cursor: pointer;
+}

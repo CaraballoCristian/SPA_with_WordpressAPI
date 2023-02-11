@@ -1,104 +1,104 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
 .loader-post-card{
+    @include flex(column, space-between, center);
+    
     height: 350px;
-    margin: 1rem auto;
     width: 90%;
     max-width: 300px;
-    background-color: rgba(255, 255, 255, .5);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    margin: 1rem auto;
+    
+    background-color: rgba(255, 255, 255, .5);                       //skeleton color variable
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);                  //skeleton shadow variable(dark mode)
 
     border-radius: 10px;
 
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);
     overflow: hidden;
 
     & div{
         border-radius: 5px;
     }
-
-    &__top{
+    &-top{
         height: 65%;
         width: 100%;
         
-        .loader-post-card__img{
+        &-img{
             height: 100%;
-            
             min-height: 150px;
         }
     }
-
-    &__bottom{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    &-bottom{
+        @include flex(column, space-between);
+       
         gap: .5rem;
-        height: 100%;
+
         min-width: 100%;
+        height: 100%;
 
         &-text{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            @include flex(column, space-between);
 
             width: 90%;
             height: 60%;
             
             margin: 0.5rem auto -1rem;
 
-            .loader-post-card__title{
+            &-title{
                 height: clamp(1rem, .3rem + .5vw, 1.5rem);
                 margin:0;
             }
-            .loader-post-card__title2{
+            &-title2{
                 width: 60%;
                 height: clamp(1rem, .3rem + .5vw, 1.5rem);
+                
                 margin: -2rem 0 0;
             }
-            .loader-post-card__link{
-                margin-left: auto;
-                border-radius: 10px;
+            &-link{                                          //si la vas a hacer de flipear. sacas esto (?
                 width: 8rem;
                 height: 1.5rem;
+
+                margin-left: auto;
+
+                border-radius: 10px;
             }
         }
-        .loader-post-card__author{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
+        &-author{
+            @include flex(row, space-around, center);
             
-            margin: 1rem auto 1rem;
             width: 90%;
 
-            .loader-post-card__author--img{
-                border-radius: 50%;
+            margin: 1rem auto;
+
+            .loader-post-card-bottom-author-img{
                 width: 64px;
                 height: 64px;
+
                 margin-inline: .5rem auto;
+
+                border-radius: 50% // !important;         //esto no pasaba si selecciono la clase directamente ".classname"
             }
-            .loader-post-card__figcaption{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
+            &-figcaption{
+                @include flex(column, center);
                 
-                white-space: nowrap;
                 width: 80%;
+
+                white-space: nowrap;
                 
-                .loader-post-card__figcaption--h3{
+                &-h3{
                     height: 1rem;
                     width: 7rem;
+
                     margin: 1rem 0 .5rem 4.5rem;
                 }
-                .loader-post-card__figcaption--date{
+                &-date{
                     height: 1rem;
                     width: 5rem;
+
                     margin: 0 0 .5rem 4.5rem;
                 }
-
             }
-
         }
     }
 }
@@ -106,14 +106,15 @@
 .loader-search-card{
     height: 145px;
     width: 90%;
-    background-color: rgba(255, 255, 255, .5);
+
     margin: 2rem auto;
+    
+    background-color: rgba(255, 255, 255, .5);                                      //skeleton color variable
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);                                 //skeleton shadow variable(dark mode)
+    
     border-radius: 10px;
 
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);
-
     &-body{
-
         display: flex;
         
         padding: .5rem .5rem 0;
@@ -121,130 +122,133 @@
         & div{
             border-radius: 5px;
         }
-
-        .loader-search-card-author{
-            margin: 0;
+        &-author{
+            @include flex(column, space-between);
+            
             height: 130px;
             width: max(20%, 200px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             
-            border-right: 2px solid rgba(0 0 0 /.2);
+            margin: 0;
+            
+            border-right: 2px solid rgba(0 0 0 /.2);        //no requiere ser variable!             
             border-radius: 0;
-            
-
-            &-img{
-                border-radius: 50%;
+    
+            .loader-search-card-body-author-img{
                 min-width: 64px;
                 min-height: 64px;
-                margin-inline: auto;
-            }
 
+                margin-inline: auto;
+                
+                border-radius: 50%;  //!important     //esto se soluciona al usar el selector directo ".className"
+            }
             &-text{
+                @include flex(column, center, center);
+
                 width: 100%;
                 height: 50%;
+
                 margin: 1rem 0 0 0;
-                display: flex;
-
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
+                
                 &-name{
                     width: 65%;
                     height: 1.2rem;
+
                     margin-block: .5rem;
-                    
                 }
                 &-date{
                     width: 4rem;
                     height: 1rem;
+
                     margin-bottom: .5rem;
                 }
             }
         }
-        .loader-search-card-content{
+        &-content{
+            @include flex(column, space-between);
+            
             width: 80%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            
             padding: .5rem;
 
             &-title{
                 height: 1.5rem;
                 width: 70%;
+
                 margin-left: .2rem;
-
             }
-
             &-subtitle{
                 width: 50%;
                 height: 1.5rem;
+
                 margin: -2rem 0 0 .2rem;
             }
-        
             &-link{
                 height: 1.2rem;
-                width: max(15%,4rem);
+                width: max(15%, 4rem);
+
                 margin-inline: auto 1rem;
             }
         }
-    }
-    
+    }  
 }
 
 .loader-post-section{
     height: 100%;
     width: 100%;
+
     margin-inline: auto;
-    
+
     & div{
         border-radius: 5px;
     }
-
     &-header{
+        @include flex(row, center);
+
         width: 100%;
         height: 220px;
-        display: flex;
-        justify-content: center;
+
         margin-inline:auto;
 
         &-left{
             width: min(60%, calc(1150px - 4rem));
+            
             padding:0rem 2rem;
             margin-inline: 1.5rem;
             
             &-title{
                 height: 20%;
-                margin: 3.5rem auto;
                 width: max(100%,200px);
+                
+                margin: 3.5rem auto;
             }
             &-author{
-                width: max(100%,200px);
-                margin: -1.5rem auto;
                 display: flex;
-                padding-left: .5rem;
-                
 
-                &-img{
-                    border-radius: 50% !important;
+                width: max(100%,200px);
+                
+                margin: -1.5rem auto;
+                padding-left: .5rem;
+
+                .loader-post-section-header-left-author-img{
                     height: 64px;
                     width: 64px;
+
                     margin-right: 1rem;
+                    
+                    border-radius: 50% //!important;            ///se arregla invocando a la clase por nombre completo
                 }
                 &-text{
+                    @include flex(column, center);
+
                     width: max(20%, 100px);
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
+
                     &-name{
-                        margin-bottom:.5rem;
                         height: 35%;
                         width: 80%;
+
+                        margin-bottom:.5rem;
                     }
                     &-date{
-
                         height: 30%;
                         width: 100%;
                     }
@@ -254,69 +258,74 @@
         &-right{
             height: 100%;
             width: 20%;
-            margin-left: 4rem;
 
+            margin-left: 4rem;
         }
     }
+    &-content{
+        @include flex(row, center);
 
-    .loader-post-section-content{
-        display: flex;
-        justify-content: center;
         margin-inline:auto;
 
         &-main{
-            
-            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);
-            background-color: rgba(255, 255, 255, .8);
-            border-radius: 10px;
             height: 100vh;
             width: min(60%, calc(1150px - 4rem));
+            
             padding:1rem 2rem;
             margin-inline: 1.5rem;
 
+            box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);                       //VARIABLE COLOR SKELETON
+            background-color: rgba(255, 255, 255, .8);                            //VARIABLE SHADOW SKELETON
+            
+            border-radius: 10px;
+
             &-text{
                 height: 1.2rem;
+
                 margin:1rem auto;
             }
             &-text:last-child{
                 width: 60%;
+
                 margin:0;
                 margin-right: auto
             }
         }
-
         &-aside{
-            margin-inline: 2rem;
-            border-left: solid 3px lightgray;
-            border-radius: 0;
-
             height: 100vh;
             width:20%;
-
             min-width: 300px;
 
+            margin-inline: 2rem;
+
+            border-left: solid 3px lightgray;
+            border-radius: 0;
+        
             &-title{
-                margin:.5rem auto;
                 width: 40%;
                 height: 1.5rem;
 
+                margin:.5rem auto;
             }
             &-post{
+                @include flex(row, space-between);
                 
-                box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);
-                background-color: rgba(255, 255, 255, .8);
-                border-radius: 10px;
                 margin: 1rem 0 0 1rem;
-                display: flex;
-                justify-content: space-between;
+
+                box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);                          //VARIABLE SHADOW SKELETON
+                background-color: rgba(255, 255, 255, .8);                               //VARIABLE COLOR SKELETON
+                
+                border-radius: 10px;
+                
                 overflow: hidden;
 
                 &-text{
+                    @include flex(column, space-around);
+
                     width: 70%;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-around;
+ 
                     padding-inline: .5rem;
+ 
                     &-title{
                         width: 90%;
                         height: 1rem;
@@ -329,15 +338,12 @@
                 &-img{
                     width: 55px;
                     height: 55px;
+
                     border-radius: 0px;
                 }
             }
-
         }
-
-
     }
-
     @media screen and (max-width: 1200px){
         .loader-post-section{
             &-header{
@@ -347,13 +353,14 @@
                 &-right{
                     display: none;
                 }
-
             }
-
             &-content{
-                width: 100%;
-                padding-inline:1rem;
                 flex-direction: column;
+
+                width: 100%;
+
+                padding-inline:1rem;
+
                 &-main{
                     width: calc(100% - 2rem);
                 }
@@ -367,18 +374,22 @@
 }
 
 .skeleton{
-    background: #c1c1c1;
     position: relative;
-    overflow: hidden;
 
+    background: #c1c1c1;                               //VARIABLE COLOR FONDO SKELETON
+    
+    overflow: hidden;
     &::before{
         content: "";
         position: absolute;
-        display: block;
+        
         width: 100%;
         height: 100%;
-        background: linear-gradient(to right, transparent, #d3d3d3, transparent);
+        
+        background: linear-gradient(to right, transparent, #d3d3d3, transparent);        //VARIABLE BRILLO SKELETON BRILLO
+        
         transform:translateX(-100%);
+        
         animation: skeleton 1s infinite;
     }
 
