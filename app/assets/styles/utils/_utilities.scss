@@ -38,8 +38,8 @@
     
     padding: .5rem 1rem .5rem 2.5rem;
     
-    color:#333;                                        // variable colors
-    border:solid #333 2px;                             //usar variable ya que tiene que matchear con el color de letra
+    color:#aaa;                                        // variable colors
+    border:solid #eee 2px;                             //usar variable ya que tiene que matchear con el color de letra
     border-radius: 50vh;
     
     font-weight: bold;
@@ -47,6 +47,11 @@
     transition: all .5s ease;
 
     overflow: hidden;
+
+    &:focus{
+        outline:none;
+    }
+
     & span{
         @include position(absolute, 2px, unset, 2px);
         position: absolute;

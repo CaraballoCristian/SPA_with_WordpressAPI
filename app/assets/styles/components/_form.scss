@@ -118,9 +118,9 @@
     border-bottom: #dc3545 solid 5px ;                  //variable
 }
 .span-form{
-    @include position(absolute, 50%, 50%);
+    @include position(absolute, 50%, unset, 50%);
     transform: translate(-50%, -50%);
-
+    
     width: 50%;
     height: 30%;
     

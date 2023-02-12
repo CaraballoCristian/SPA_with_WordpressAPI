@@ -12,11 +12,9 @@ export function Home(homeCard){
     <div class="home-section-top">
         <div class="home-section-top-text">
             <h2 class="home-section-top-text-about">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                Odit est architecto laudantium quod illo dignissimos 
-                mollitia aliquam quasi.
+                Simple SPA that consumes data from CSS-TRICKS using WordPress API. Created with HTML, CSS, JavaScript, SASS and GSAP.
             </h2>
-            <a class="home-section-top-text-link">GitHub</a>
+            <h3>For more information please check <a href="https://github.com/CaraballoCristian/SPA_with_WordpressAPI" class="home-section-top-text-link" target="_blank" rel="noopener">the repo</a> on GitHub!</h3>
         </div>
         <div class="home-section-top-animation">
 
@@ -24,10 +22,12 @@ export function Home(homeCard){
     </div>
     <div class="home-section-bottom">
         <h2 class="home-section-bottom-title">LAST POST</h2>
+        <span class="arrow"></span>
         <div class="home-section-bottom-cardbox">
             ${homeCard}
         </div>    
     </div>
 
     `
+    
 }

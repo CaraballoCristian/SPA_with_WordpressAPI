@@ -17,7 +17,7 @@ export function PostCard(props){
     return `
         <article  class="post-card">
             
-            <div class="post-card-front">
+            <div class="post-card-front post-card-face">
                 <div class="post-card-front-top">
                     <img class="post-card-front-top-img"src="${urlCover}"" alt="">
                 </div>      
@@ -35,7 +35,7 @@ export function PostCard(props){
                     </figure>
                 </div> 
             </div> 
-            <div class="post-card-back"> 
+            <div class="post-card-back post-card-face"> 
                 <div class="post-card-back-text">
                     ${excerpt.rendered}
                 </div>

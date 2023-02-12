@@ -1,41 +1,64 @@
+@import "../utils/mixins";
+@import "../utils/variables";
+
 .home-card{
-    position:relative;
-    
+    position: relative;
     display: flex;
     
     width: min(90%, 1600px);
-    max-height: 60vh;
     margin-inline: auto;
     
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);
+    box-shadow: 0px 0px 20px 10px rgba(255, 50, 200, 0.5) ,0px 0px 20px 10px rgba(80, 42, 247, 0.6);
     border-radius: 20px;
+
+    background-color: #eee;
     
     overflow: hidden;
-    
+
     &-imgbox{
+        position: relative;
+        min-height: 50%;
+        overflow: hidden;
         &-img{
-            height: 100%;
             display: flex;
+
+            height: 100%;
+            
             object-fit:cover;
-            object-position: left;
+            object-position: center;
+        }
+        &::before{
+            content:"";
+            @include position(absolute, 0, 0, 0, 0);
+            background: linear-gradient(90deg,  transparent 50%, #eee 100%, transparent 10%);
+            z-index: 2;
+        }
+        &::after{
+            content:"";
+            @include position(absolute, 0, 0, 0, 0);
+            background: linear-gradient(135deg,  transparent,rgba(255, 50, 200, 0.5) 20%,rgba(80, 42, 247, 0.6)70%, rgba(238, 238, 238, 1) 200%, transparent);
+            z-index: 1;
         }
     }
     
     &-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex(column, space-between);
 
-        background-color: #eee;
         width: 50%;
         min-width: 400px;
+        min-height: 50%;
+        
         padding:1rem;
+
+        background-color: #eee;                                       //variable
 
         &-text{
             padding-inline: 2rem;
             &-title{
-                font-size: 2rem;
-                
+                font-size: clamp(1rem, .5rem + 3vw, 2rem);                                         //clamp it!
+            }
+            & p{
+                font-size: clamp(.9rem, .3rem + 2vw, 1.2rem);
             }
         }
         
@@ -51,13 +74,14 @@
     &:hover{
         cursor: pointer;
     }
+
 }
 
 
 @media screen and (max-width: 800px){
     .home-section{
         &-bottom{
-            height: 80vh;
+            min-height: 80vh;
             padding-inline:1rem;
         }
     }
@@ -66,31 +90,49 @@
         padding: 1rem;
     }
     .home-card{
-        margin: 1rem;
+        @include flex(column, space-between);
+
         width: 100%;
         min-width: 300px;
-        margin-inline:auto;
-        flex-direction: column;
         max-height: none;
         min-height: calc(100% - 1rem);
-        background: #333;
-        justify-content: space-between;
+        
+        margin: 1rem;
+        margin-inline:auto;
+        
+        background: #eee;                           //varibles
 
         &-imgbox{
             &-img{
                 min-width: 100%;
                 height: 250px;
+
                 object-position: center;
                 object-fit: cover;
+            }
+            &::before{
+                content:"";
+                @include position(absolute, 0, 0, 0, 0);
+                background: linear-gradient(180deg,  transparent 50%, #eee 100%, transparent 10%);
+                z-index: 2;
+            }
+            &::after{
+                content:"";
+                @include position(absolute, 0, 0, 0, 0);
+                background: linear-gradient(45deg,  transparent,rgba(255, 50, 200, 0.5) 20%,rgba(80, 42, 247, 0.6)70%, rgba(238, 238, 238, 1) 200%, transparent);
+                z-index: 1;
             }
         }
         &-container{    
             min-width: 100%;
+
             padding: 0;
             
             &-text{
-                padding:0 1rem;
                 height: 250px;
+
+                padding:0 1rem;
+                
                 &-title{
                     margin:.5rem 0 0;
                 }
@@ -99,18 +141,19 @@
             &-author{
                 max-height: 64px;
                 width: 64px;
+
                 margin-top: 0;
+
                 &-figcaption{
                     &-name{
-                        white-space: nowrap;
                         margin:.5rem 0;
+
+                        white-space: nowrap;
                     }
                     &-date{
                     }
                 }
-                
             }
-           
         }
     }
 }

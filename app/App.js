@@ -7,6 +7,7 @@ import { SocialNetwork } from "./components/SocialNetwork.js";
 import { Router } from "./components/Router.js";
 import { infiniteScroll } from "./helpers/infinite_scroll.js";
 import { validateForm } from "./helpers/validate_forms.js";
+import { preventScroll } from "./helpers/prevent_scroll.js";
 
 export function App(){
     const $root = document.getElementById("root");
@@ -22,4 +23,5 @@ export function App(){
     infiniteScroll();
     validateForm();
     SocialNetwork();
+    preventScroll();
 } 

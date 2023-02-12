@@ -12,10 +12,10 @@ const postCardLoader = () => {
                 <div class="loader-post-card-bottom-text-link skeleton"></div>
             </div>
             <div class="loader-post-card-bottom-author">
-                <div class="loader-post-card-bottom-author-img skeleton">
+                <div class="loader-post-card-bottom-author-img skeleton"></div>
                 <div class="loader-post-card-bottom-author-figcaption">
                     <div class="loader-post-card-bottom-author-figcaption-h3 skeleton"></div>
-                    <div class="loader-post-card-bottom-author-figcaption-date skeleton" datetime=""></div>
+                    <div class="loader-post-card-bottom-author-figcaption-date skeleton"></div>
                 </div>
             </div>
         </div > 
@@ -78,50 +78,52 @@ const postLoader = () => {
                 <div class="loader-post-section-content-main-text skeleton"></div>
             </div>
             <div class="loader-post-section-content-aside">
-                <div class="loader-post-section-content-aside-title skeleton"></div>
-                <div class="loader-post-section-content-aside-post">
-                    <div class="loader-post-section-content-aside-post-text">
-                        <div class="loader-post-section-content-aside-post-text-title skeleton"></div>
-                        <div class="loader-post-section-content-aside-post-text-date skeleton"></div>
+                <div class="loader-post-section-content-aside-container">
+                <div class="loader-post-section-content-aside-container-title skeleton"></div>
+                    <div class="loader-post-section-content-aside-container-post">
+                        <div class="loader-post-section-content-aside-container-post-text">
+                            <div class="loader-post-section-content-aside-container-post-text-title skeleton"></div>
+                            <div class="loader-post-section-content-aside-container-post-text-date skeleton"></div>
+                        </div>
+                        <div class="loader-post-section-content-aside-container-post-img skeleton"></div>
                     </div>
-                    <div class="loader-post-section-content-aside-post-img skeleton"></div>
-                </div>
-                <div class="loader-post-section-content-aside-post">
-                    <div class="loader-post-section-content-aside-post-text">
-                        <div class="loader-post-section-content-aside-post-text-title skeleton"></div>
-                        <div class="loader-post-section-content-aside-post-text-date skeleton"></div>
+                    <div class="loader-post-section-content-aside-container-post">
+                        <div class="loader-post-section-content-aside-container-post-text">
+                            <div class="loader-post-section-content-aside-container-post-text-title skeleton"></div>
+                            <div class="loader-post-section-content-aside-container-post-text-date skeleton"></div>
+                        </div>
+                        <div class="loader-post-section-content-aside-container-post-img skeleton"></div>
                     </div>
-                    <div class="loader-post-section-content-aside-post-img skeleton"></div>
-                </div>
-                <div class="loader-post-section-content-aside-post">
-                    <div class="loader-post-section-content-aside-post-text">
-                        <div class="loader-post-section-content-aside-post-text-title skeleton"></div>
-                        <div class="loader-post-section-content-aside-post-text-date skeleton"></div>
+                    <div class="loader-post-section-content-aside-container-post">
+                        <div class="loader-post-section-content-aside-container-post-text">
+                            <div class="loader-post-section-content-aside-container-post-text-title skeleton"></div>
+                            <div class="loader-post-section-content-aside-container-post-text-date skeleton"></div>
+                        </div>
+                        <div class="loader-post-section-content-aside-container-post-img skeleton"></div>
                     </div>
-                    <div class="loader-post-section-content-aside-post-img skeleton"></div>
-                </div>
-                <div class="loader-post-section-content-aside-post">
-                    <div class="loader-post-section-content-aside-post-text">
-                        <div class="loader-post-section-content-aside-post-text-title skeleton"></div>
-                        <div class="loader-post-section-content-aside-post-text-date skeleton"></div>
+                    <div class="loader-post-section-content-aside-container-post">
+                        <div class="loader-post-section-content-aside-container-post-text">
+                            <div class="loader-post-section-content-aside-container-post-text-title skeleton"></div>
+                            <div class="loader-post-section-content-aside-container-post-text-date skeleton"></div>
+                        </div>
+                        <div class="loader-post-section-content-aside-container-post-img skeleton"></div>
                     </div>
-                    <div class="loader-post-section-content-aside-post-img skeleton"></div>
-                </div>
-                <div class="loader-post-section-content-aside-post">
-                    <div class="loader-post-section-content-aside-post-text">
-                        <div class="loader-post-section-content-aside-post-text-title skeleton"></div>
-                        <div class="loader-post-section-content-aside-post-text-date skeleton"></div>
+                    <div class="loader-post-section-content-aside-container-post">
+                        <div class="loader-post-section-content-aside-container-post-text">
+                            <div class="loader-post-section-content-aside-container-post-text-title skeleton"></div>
+                            <div class="loader-post-section-content-aside-container-post-text-date skeleton"></div>
+                        </div>
+                        <div class="loader-post-section-content-aside-container-post-img skeleton"></div>
                     </div>
-                    <div class="loader-post-section-content-aside-post-img skeleton"></div>
-                </div>
-                <div class="loader-post-section-content-aside-post">
-                    <div class="loader-post-section-content-aside-post-text">
-                        <div class="loader-post-section-content-aside-post-text-title skeleton"></div>
-                        <div class="loader-post-section-content-aside-post-text-date skeleton"></div>
+                    <div class="loader-post-section-content-aside-container-post">
+                        <div class="loader-post-section-content-aside-container-post-text">
+                            <div class="loader-post-section-content-aside-container-post-text-title skeleton"></div>
+                            <div class="loader-post-section-content-aside-container-post-text-date skeleton"></div>
+                        </div>
+                        <div class="loader-post-section-content-aside-container-post-img skeleton"></div>
                     </div>
-                    <div class="loader-post-section-content-aside-post-img skeleton"></div>
-                </div>
-                    
+
+                </div>    
             </div>
         </div>
     </section>  

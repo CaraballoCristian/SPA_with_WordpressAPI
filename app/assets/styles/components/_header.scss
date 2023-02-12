@@ -40,30 +40,53 @@
                 width: 90%;
 
                 & a{
-                    width: calc(100% / 3);
-                    padding-block: .5rem;                    
+                    position: relative;
+                    padding: .5rem 1rem;                    
                     
                     letter-spacing: 3px;
                     font-weight: bold;
                     text-align: center;
 
-                    &:hover{
-                        box-shadow: 1px 0 0 0 0 #eee;
-                    }
+                    margin:0;
+                    background-color: transparent;
 
+                    color: #eee;
+                    transition: all .3s ease;
+
+                    &.selected{
+                        pointer-events: none;
+                        transition: all .3s ease;
+                    }
+                    
+                    &:after{
+                        content:"";
+                        @include position(absolute, unset, -10px, 50%);
+                        height: 5px;
+                        width: 0%;
+                        background: linear-gradient(90deg, rgba(80, 42, 247, 0.7),hsla(316, 100%, 60%, 0.7));
+                        transition: all .3s ease;
+                    }
+                    &:hover::after{
+                        left: 0;
+                        width: 100%;
+                    }
+                    &::before{
+                        content:"";
+                        @include position(absolute, unset, -10px, 0);
+                        height: 5px;
+                        width: 0%;    
+                        border-radius: 2px;
+                        background: linear-gradient(90deg, rgba(80, 42, 247, 0.7),hsla(316, 100%, 60%, 0.7));
+                    }
+                    &.selected::before{
+                        width: 100%;
+                    }
+                   
+                    
                 }
             }
         }
     }
-}
-
-//menu current section 
-.selected{
-    color: rebeccapurple !important;                                                      //variable colors
-}
-.openned{
-    height: 100vh !important;
-    opacity: 1 !important;
 }
 
 @media screen and (max-width: 900px) {
@@ -78,10 +101,11 @@
 
                 margin-left: auto;
 
+                backdrop-filter: blur(3px);
                 background-color: rgba(0 0 0 / .8);
                 overflow: hidden;
 
-                opacity: 0;
+                opacity: 1;
 
                 transition: all .5s ease;
 
