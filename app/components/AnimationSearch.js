@@ -1,3 +1,5 @@
+import { getDefaultFontSize } from "../helpers/getDefaultFontSize.js";
+
 let pos = 0,
 oldPos = 0
 
@@ -52,7 +54,7 @@ const $searchHeader = document.querySelector(".search-header")
                     }
     
                     //desaparicion de la carta superior
-                    if(data.top <= 5*16 && !card.classList.contains("faded")){
+                    if(data.top <= 5*getDefaultFontSize() && !card.classList.contains("faded")){
                         card.classList.add("faded");
     
                         gsap.timeline()

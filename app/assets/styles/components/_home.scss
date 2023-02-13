@@ -8,28 +8,46 @@
         @include flex(row, space-around, center);
         
         min-height: calc(95vh - 5rem);
-
-        &-text{
-            width: 35%;
-            height: min(50%, 400px);
-            padding:1rem;
+        padding: 2rem;
         
-            color: #eee;
+        &-text{
+            width: 45%;
+            height: min(50%, 400px);
+            
+            padding:1rem;
+            margin-top: 4rem;
+        
+            color: #eee;                                                              //variable colors
+
             &-about{
                 min-width: 400px;
-                font-size: clamp(1rem, .8rem + 3vw, 2rem);
-                font-size: clamp(.5rem, .5rem + 5vw, 2rem)  ;
-                letter-spacing: 1px;
+
+                font-size: clamp(.5rem, .5rem + 3vw, 2rem)  ;
+                letter-spacing: 2px;
                 line-height: 3rem;
-            }
-            &-link{
                 
             }
+
+            #home-h2{
+                transform: translate(-200%);
+                opacity: 0;
+            }
+            #home-h3{
+                transform: translate(0%, 200%);
+                opacity: 0;
+            }
+            
+            #home-gh-link{
+                color: #eee;
+                text-decoration: underline;
+            }
+
         }
         
         &-animation{
-            background-color: blue;
-            height: 100%;
+            margin-top: 4rem;
+            border: solid white 2px;
+            height: 65vh;
             width: 45%;
         }
     }
@@ -37,11 +55,10 @@
     &-bottom{   
         min-height: 70vh;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include flex(column, center, center);
         
+        margin-top: 5rem;
+
         &-title{
             position: relative;
 
@@ -63,20 +80,48 @@
             height: 85%;
             padding-block:1rem;
         }
-        
-        &-btnbox{
-            margin-top:1rem;
-            border: solid white 2px;
-            height: 10%;
-            width: 70%;
+        &-postsbox{
+            margin-top: 10rem;
+            width: 100%;
+            min-height: 100vh;
+            padding-block:1rem;
 
-            display: flex;
-            justify-content: end;
+            &-linkbox{
+                padding: 2rem 4rem;
+                &-link{
+                    width: 15rem;
+                    height: 3.5rem;
+                    
+                    margin: 4rem auto 0;
 
-            &-btn{
-            margin-right:2rem;
+                    &:hover{
+                        
+                        & span{
+                            transform: translateX(225px - 40px);
+                        }
+                        &::before{
+                            width: 100%;
+                        }
+                    }
+                }
             }
+
         }
+        
     }
 
+}
+
+@media screen and (max-width: 1200px) {
+    .home-section-top{
+        flex-direction: column;
+        &-text{
+            margin-top: 7rem;
+            width: 90%;
+        }
+        &-animation{
+            margin-top: 0rem;
+            width: 90%;
+        }
+    }
 }

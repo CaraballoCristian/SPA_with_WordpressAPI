@@ -6,7 +6,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed ;
-    background-position:top center ;
+    background-position:top center;
 }
 
 .home-section{
@@ -30,6 +30,10 @@
 
     background-color: rgba(0  0  0 / 0.5);                                 //VARIABLES COLOR
     height: 4rem;
+
+    opacity: 0;
+
+    transform: translate(0%, -100%);
 
     & form{
         @include flex(row, center, center);

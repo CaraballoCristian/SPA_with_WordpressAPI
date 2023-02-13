@@ -8,8 +8,7 @@ html{
 * {
     box-sizing: border-box;
 }
-
-//ELEMENTOS NO SELECCIONABLES
+//elementos no seleccionables
 .title,
 .menu > *{
     -webkit-user-select: none;

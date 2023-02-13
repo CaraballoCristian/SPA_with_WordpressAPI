@@ -66,6 +66,7 @@
     }
 
     .post-section-content{
+
         @include flex(row, center);
         
         &-main{
@@ -104,9 +105,9 @@
                 overflow-y: auto;
             }
             //para limitar el tamaño de los archivos multimedia
-            video,
-            img,
-            iframe{
+            & video,
+            & img,
+            & iframe{
                 max-width: 100%;
                 max-height: 70vh;
             }

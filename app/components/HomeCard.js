@@ -1,7 +1,6 @@
 import { CalculateDate } from "../helpers/calculate_date.js";
 
-export function HomeCard(props){
-    //console.log(props)
+export function HomeCard(props, className){
     let {title, date, slug, _embedded, excerpt} = props,
         dateFormat = new Date(date).toLocaleString(),
         authorImg = _embedded.author[0].avatar_urls["96"]
@@ -17,20 +16,20 @@ export function HomeCard(props){
     let postDate = CalculateDate(new Date(date));
 
     return `
-        <article class="home-card" data-slug="#/${slug}">
-            <div class="home-card-imgbox">
-                <img class="home-card-imgbox-img" src="${urlCover}" alt="">
+        <article class="${className}" data-slug="#/${slug}">
+            <div class="${className}-imgbox">
+                <img class="${className}-imgbox-img" src="${urlCover}" alt="">
             </div>
-            <div class="home-card-container">
-                <div class="home-card-container-text">
-                    <h2 class="home-card-container-text-title">${title.rendered}</h2>
-                    <div class="home-card-container-text-par">${excerpt.rendered}</div>
+            <div class="${className}-container">
+                <div class="${className}-container-text">
+                    <h2 class="${className}-container-text-title">${title.rendered}</h2>
+                    <div class="${className}-container-text-par">${excerpt.rendered}</div>
                 </div>
-                <figure class="home-card-container-author">
-                    <img class="home-card-container-author-img" src="${authorImg}" alt="">
-                    <figcaption class="home-card-container-author-figcaption">
-                        <h3 class="home-card-container-author-figcaption-name">${authorName}</h3>
-                        <time class="home-card-container-author-figcaption-date" datetime="${dateFormat}">${postDate}</time>
+                <figure class="${className}-container-author">
+                    <img class="${className}-container-author-img" src="${authorImg}" alt="">
+                    <figcaption class="${className}-container-author-figcaption">
+                        <h3 class="${className}-container-author-figcaption-name">${authorName}</h3>
+                        <time class="${className}-container-author-figcaption-date" datetime="${dateFormat}">${postDate}</time>
                     </figcaption>
                 </figure>
             </div>

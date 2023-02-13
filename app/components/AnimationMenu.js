@@ -3,6 +3,8 @@ const breakpoint = 900;
 export function AnimationMenu(){
     const $hamb = document.querySelector(".hamb-menu-btn")
 
+    gsap.set(".menu-container a",{ opacity: 1, y: "0%"})
+
     let toCross = gsap.timeline({paused: true})
         .to(".hamb-menu-btn-top",{duration: .5, opacity:0, y:"-100%"}, 0)
         .to(".hamb-menu-btn-middle-top",{duration: .5, transformOrigin: "center", rotation: "45", width: "130%", x: "-10%"}, 0)
@@ -11,18 +13,21 @@ export function AnimationMenu(){
     
     let toOpen = gsap.timeline({paused:true})
         .to(".menu", { opacity: 1, height:"100vh", duration :.2})
-        .from(".menu-container a",  { opacity: 0, y:"-100%", duration :.2, delay: .2, stagger: .2} )
+        .from(".menu-container a",  { opacity: 0, y:"-200%", duration :.2, delay: .2, stagger: {each: .2, from: "end"}} );
 
     //reset, must be after timelines declarations
-    if(window.innerWidth >= breakpoint) gsap.set(".menu-container a",{opacity: 1, y:"00%", duration: 0})
+    if(window.innerWidth >= breakpoint){
+        gsap.set(".menu-container a",{opacity: 1, y:"0%", duration: 0});
+    } 
 
-           
     document.addEventListener("click", e => {
         if(e.target.matches(".hamb-menu-btn") || e.target.matches(".hamb-menu-btn *")){
-            if(!$hamb.classList.contains("isOpen")){      
+            if(!$hamb.classList.contains("isOpen")){  
+                console.log("forward")    
                 toCross.play();                          //for some reason, it doesn't work inside a master timeline :c
                 toOpen.play();
             }else{
+                console.log("reverse")    
                 toCross.reverse();
                 toOpen.reverse();
             }

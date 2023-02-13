@@ -1,4 +1,5 @@
 import { getCard } from "../helpers/getCard.js";
+import { getDefaultFontSize } from "../helpers/getDefaultFontSize.js";
 
 export function Post(props, related, author){
     let {content, title, date} = props,
@@ -13,6 +14,21 @@ export function Post(props, related, author){
     document.addEventListener("click", e => {
         if(e.target.matches(".related-card figure") || e.target.matches(".related-card figure *")){
             location.hash = getCard(e.target,"related-card").getAttribute("data-slug");
+        }
+
+        //avoiding hash navigation inside post to break everything XD   
+        if(e.target.matches(".post-section-content *") && e.target.getAttribute("href").includes("#")){
+            e.preventDefault();
+
+            const hash = e.target.getAttribute("href").slice(1),
+                target = document.querySelector(`.post-section-content-main *[id='${hash}']`).offsetTop;
+            let marginTop = 6 * getDefaultFontSize(); //6rem
+
+            window.scrollTo({
+                top: target - marginTop,
+                left: 0,
+                behavior: "smooth"
+            })
         }
     })
 

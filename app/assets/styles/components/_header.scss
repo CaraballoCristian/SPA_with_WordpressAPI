@@ -130,6 +130,15 @@
                         border-radius: 10px ;
             
                         color:#eee;                                                              //variables color            
+
+                        &::after,
+                        &::before{
+                            display: none;
+                        }
+                        &.selected,
+                        &:hover{
+                            background: linear-gradient(90deg, rgba(80, 42, 247, 0.7),hsla(316, 100%, 60%, 0.7));
+                        }
                     }
                 }
             }

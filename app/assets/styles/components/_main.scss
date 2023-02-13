@@ -18,3 +18,13 @@ main{
     
     margin: 1rem auto;
 }
+.grid-fluid-home{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(350px), 1fr));
+
+    max-width: 90%;
+    
+    gap:3rem;
+    
+    margin: 1rem auto;
+}

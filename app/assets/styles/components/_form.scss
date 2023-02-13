@@ -124,7 +124,7 @@
     width: 50%;
     height: 30%;
     
-    background-color: #eee;                             //variable
+    background-color: #333;                             //variable
     border-radius: 10px;
     
     font-size: 1.5rem;                                    //clamp
@@ -142,11 +142,11 @@
         visibility: visible;
     }
     &-success{                                             //VARIABLES. las sombras quiza para variables exito/error
-        color: #333;
+        color: #eee;
         box-shadow: 0px 0px 10px 2px rgb(55, 228, 11);        
     }
     &-err{                                                 //VARIABLES. las sombras quiza para variables exito/error   
-        color: #333;
+        color: #eee;
         box-shadow: 0px 0px 10px 2px rgb(220, 53, 69);
     }
     .success-div,

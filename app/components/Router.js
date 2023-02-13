@@ -13,11 +13,7 @@ previo;
 
 export async function Router(){
 
- document.getElementById("root")
-        //.style.backgroundImage = `url("https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/12/css-tricks-logo-gradient-outline.png?fit=1024%2C512&ssl=1")`;
-
-        .style.backgroundImage = `url("app/assets/img/fondo.jpg")`;
-        //.style.backgroundImage = `url("app/assets/img/css-is-awesome.webp")`;
+    document.getElementById("root").style.backgroundImage = `url("app/assets/img/fondo.jpg")`;
 
     const d = document,
         w = window,
@@ -33,14 +29,20 @@ export async function Router(){
 
         await ajax({
             url: api.HOME,
-            cbSuccess: (post) => {
-
+            cbSuccess: (posts) => {
                 const $home = d.createElement("section");
                 $home.classList.add("home-section");
                 
-                const $homeCard = HomeCard(post[0]);
+                const $homeCard = HomeCard(posts[0], "home-card-main");
 
-                $home.innerHTML = Home($homeCard);
+                const $cards = d.createElement("div");
+                $cards.classList.add("home-cards-box");
+                
+                for(let i = 1; i < posts.length; i++){
+                    $cards.innerHTML += HomeCard(posts[i], "home-card-secondary");
+                }
+
+                $home.innerHTML = Home($homeCard, $cards);
                 
                 $main.appendChild($home); 
             }
