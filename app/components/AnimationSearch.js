@@ -3,7 +3,7 @@ import { getDefaultFontSize } from "../helpers/getDefaultFontSize.js";
 let pos = 0,
 oldPos = 0
 
-export function animationSearch(){    
+export function AnimationSearch(){    
 const $searchHeader = document.querySelector(".search-header")
     if(location.hash.includes("#/search?search=")){
         document.addEventListener("scroll", e=>{
