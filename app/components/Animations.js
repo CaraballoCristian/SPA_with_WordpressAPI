@@ -1,5 +1,5 @@
+import { AnimationMenu } from "./AnimationSearch.js";
 import { AnimationMenu } from "./AnimationMenu.js";
-import { animationSearch } from "./AnimationSearch.JS";
 import { HomeAnimation } from "./HomeAnimation.js";
 
 export function Animations(){
@@ -14,13 +14,13 @@ export function Animations(){
         const $header = document.querySelector(".header");
         
         if(window.scrollY === 0) {
-            $header.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
+            $header.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
             $header.style.backdropFilter = "blur(0)"
         }
         window.addEventListener("scroll", e => {
             console.log($header.style)
             if(window.scrollY !== 0) {
-                $header.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
+                $header.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
                 $header.style.backdropFilter = "blur(5px)"
             }else {
                 $header.style.backgroundColor = "transparent";
