@@ -13,19 +13,33 @@ previo;
 
 export async function Router(){
 
-    document.getElementById("root").style.backgroundImage = `url("app/assets/img/fondo.jpg")`;
-
     const d = document,
         w = window,
-        $main = d.getElementById("main");
+        $main = d.getElementById("main"),
+        $root = d.getElementById("root");
         
     let { hash } = w.location; 
+                                                                
+    if(hash !== "#/" && hash){
+        document.getElementById("root").style.background = `radial-gradient(circle at -10% -10%,#ff32c8ab, 25%, transparent 50%),
+                                                            radial-gradient( circle at 105% 35%, #ff32caab, 20%,#0a1756 60%)`;
+        document.getElementById("root").style.backgroundAttachment = `fixed`;
+    }
 
     if(!hash || hash === "#/"){
-        
+        document.getElementById("root").style.background = "none";
+
         previo = "home"
         const $homeLink = document.querySelector(".menu a[href='#/']");
         $homeLink.classList.add("selected");
+
+        let $homeLoader  = d.createElement("div");
+        $homeLoader.classList.add("home-loader");
+        $homeLoader.innerHTML = `
+            <img src="app/assets/img/spin-loader.svg">
+        `
+
+        $root.appendChild($homeLoader);
 
         await ajax({
             url: api.HOME,
@@ -34,21 +48,30 @@ export async function Router(){
                 $home.classList.add("home-section");
                 
                 const $homeCard = HomeCard(posts[0], "home-card-main");
-
+                
                 const $cards = d.createElement("div");
                 $cards.classList.add("home-cards-box");
-                
+
                 for(let i = 1; i < posts.length; i++){
-                    $cards.innerHTML += HomeCard(posts[i], "home-card-secondary");
+                    $cards.innerHTML += HomeCard(posts[i], `secondary-card-${i} home-card-secondary`);
                 }
 
                 $home.innerHTML = Home($homeCard, $cards);
                 
-                $main.appendChild($home); 
+                let aux = d.querySelector(".home-loader");
+                
+                setTimeout(() => {
+                    $main.appendChild($home);
+                    $homeLoader.classList.add("fade-loader") ;
+                    setTimeout(() => {
+                        $root.removeChild(aux);
+                    },500);
+                },3500);
             }
         });
 
     }else if(hash === "#/posts"){
+
         previo = "posts"
         d.querySelector(".footer").style.display = "none";
 

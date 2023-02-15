@@ -5,14 +5,22 @@
     width: 90%;
     margin: 2rem auto;
     
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, .5);     
+    
+    box-shadow: 0px 0px 10px 5px rgba(34, 34, 34, .5);   
     backdrop-filter: blur(5px);                                       //VARIABLE SHADOWS
-    background: linear-gradient( rgba(80, 42, 247, 0.7),hsla(316, 100%, 60%, 0.7));
-    color: #eee;
+    //background: linear-gradient( rgba(80, 42, 247, 0.7),hsla(316, 100%, 60%, 0.7));
+    background: #eee;
+    color: #222;
 
     border-radius: 10px;
     
     font-size: clamp(.5rem, .5rem + 4vw, .75rem);                                                //CORREGIR
+
+    transition: box-shadow .5s ease;
+
+    &:hover{
+        box-shadow: 0px 0px 20px 10px rgba(255, 50, 200, 0.5) ,0px 0px 20px 10px rgba(80, 42, 247, 0.6);
+    }
 
     & div { 
         @include flex(row, space-between);

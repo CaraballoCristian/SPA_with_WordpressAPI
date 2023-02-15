@@ -6,9 +6,14 @@ export function Footer(){
 
     $footer.innerHTML = `
         <div class="footer-top">    
-        </div>
-        <div class="footer-bottom">    
             ${Form()}
+        </div>
+        <div class="footer-bottom"> 
+            <p>Cristian Caraballo - 2023</p>   
+            <div class="footer-bottom-media">
+                <div id="btn-github" class="footer-bottom-media-github"><img src="/app/assets/img/github-dark.png"></div>
+                <div id="btn-linkedin" class="footer-bottom-media-linkedin"><img src="/app/assets/img/linkedin-light.png"></div>
+            </div>
         </div>
     `
     return $footer;

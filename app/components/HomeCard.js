@@ -14,7 +14,7 @@ export function HomeCard(props, className){
             : "app/assets/img/dummy-cover.png";
 
     let postDate = CalculateDate(new Date(date));
-
+    
     return `
         <article class="${className}" data-slug="#/${slug}">
             <div class="${className}-imgbox">

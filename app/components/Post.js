@@ -7,9 +7,10 @@ export function Post(props, related, author){
         authorImg = author.avatar_urls[96] 
             ? author.avatar_urls[96]
             : "app/assets/img/no-author.png";
-
-    document.getElementById("root")
-        .style.backgroundImage = `radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.80) 100%), url("${props.featured_media_src_url}")`;
+ 
+    document.getElementById("root").style.backgroundImage =`radial-gradient(circle at -10% -10%,#ff32c8ab, 25%, transparent 50%),
+                                                            radial-gradient( circle at 105% 35%, #ff32caab, 20%,#0a1756 60%), url("${props.featured_media_src_url}")`;
+    document.getElementById("root").style.backgroundSize = "cover";  
 
     document.addEventListener("click", e => {
         if(e.target.matches(".related-card figure") || e.target.matches(".related-card figure *")){

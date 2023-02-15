@@ -11,18 +11,22 @@ export function Home(homeCard,cards){
         }
     })
 
-    //console.log(cards.innerHTML)
-
     return `
     <div class="home-section-top">
         <div class="home-section-top-text">
-            <h2  id="home-h2" class="home-section-top-text-about">
-                Simple SPA that consumes data from CSS-TRICKS using WordPress API. Created with HTML, CSS, JavaScript, SASS and GSAP.
-            </h2>
+            <h2  id="home-h2" class="home-section-top-text-about same">
+                Simple SPA that consumes data from CSS-TRICKS using WordPress API. Created with HTML, SASS, JavaScript
+            </h2><h2 id="home-h2-middle" class="same"></h2><h2 id="home-h2-end" class="same"></h2>
             <h3 id="home-h3" >For more information please check <a href="https://github.com/CaraballoCristian/SPA_with_WordpressAPI" id="home-gh-link" target="_blank" rel="noopener">the repo</a> on GitHub!</h3>
         </div>
         <div class="home-section-top-animation">
-
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
         </div>
     </div>
     <div class="home-section-bottom">
@@ -37,7 +41,7 @@ export function Home(homeCard,cards){
             </div>
             <div class="home-section-bottom-postsbox-linkbox">
                 <a class="home-section-bottom-postsbox-linkbox-link btn" href="#/posts">Keep Browsing!<span>
-                <img src="app/assets/img/next.png">
+                <img src="app/assets/img/nextWhite.png">
             </span></a>
             </div>
         </div>

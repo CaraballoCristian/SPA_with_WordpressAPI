@@ -12,8 +12,8 @@ export function AnimationMenu(){
         .to(".hamb-menu-btn-bottom",{duration: .5, opacity:0, y: "100%"}, 0);
     
     let toOpen = gsap.timeline({paused:true})
-        .to(".menu", { opacity: 1, height:"100vh", duration :.2})
-        .from(".menu-container a",  { opacity: 0, y:"-200%", duration :.2, delay: .2, stagger: {each: .2, from: "end"}} );
+        .to(".menu", { opacity: 1, height:"100vh", duration :.4})
+        .from(".menu-container a",  { opacity: 0, y:"-200%", duration :.2, delay: .4 , stagger: {amount: .3, from: "end"}} );
 
     //reset, must be after timelines declarations
     if(window.innerWidth >= breakpoint){

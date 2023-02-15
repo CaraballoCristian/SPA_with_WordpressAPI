@@ -5,6 +5,9 @@
     @include flex(column);
 
     width:100%;
+    
+    padding-block: 5rem;
+    margin-top: -5rem;
 
     &-header{  
         @include flex(row, center);
@@ -28,7 +31,7 @@
                 font-size: clamp(1.2rem,1rem + 3.5vw,3rem);                         //corregir
 
                 font-family: 'Rubik', sans-serif;                                     //ff variable
-                color: #fff;                                                        //color variable
+                color: #eee;                                                        //color variable
             }
             &-author{
                 @include flex(row, flex-start, center);
@@ -46,7 +49,7 @@
                         font-size: clamp(1rem,1rem + 3vw,1.5rem);                          //corregir
                         font-family: 'Rubik', sans-serif;                              //ff variable
                         
-                        color: #fff;                                                 //color variable
+                        color: #eee;                                                 //color variable
                         
                         white-space: nowrap;
                     }
@@ -55,7 +58,7 @@
 
                         font-family: 'Rubik', sans-serif;                              //ff variable
                         
-                        color: #fff;                                                 //color variable
+                        color: #eee;                                                 //color variable
                     }
                 }
             }
@@ -75,7 +78,7 @@
             
             margin-inline: 1.5rem;
 
-            background-color: rgba(255, 255, 255, .8);                              //variable color
+            background-color: #eee;                              //variable color
             border-radius: 10px;
 
             //para darle estilos a los textos traidos por fetch
@@ -83,7 +86,7 @@
             & h3,
             & h4, 
             & p{
-                color:#333;                                                          //variable color
+                color:#222;                                                          //variable color
                 
                 letter-spacing: 1.5px;
             }
@@ -98,7 +101,7 @@
                 padding:1rem;
                                 
                 background-color: #444;                                                  //variable color
-                color:#eee;                                                              //variable color
+                color:#eee;                                                                 //variable color
                 
                 border-radius: 10px;
                 
@@ -133,7 +136,7 @@
                 text-align: center;
 
                 &-title  {
-                    color:rgba(255, 255, 255, .8);                                        //variable color
+                    color:#eee;                                        //variable color
                 }
             }
         }
@@ -169,7 +172,7 @@
 
             &-aside{
                 width: calc(100% - 2rem);
-                height: 700px;
+                min-height: 500px;
 
                 margin-top: 2rem;
 

@@ -1,5 +1,6 @@
 import { AnimationMenu } from "./AnimationMenu.js";
 import { animationSearch } from "./AnimationSearch.JS";
+import { HomeAnimation } from "./HomeAnimation.js";
 
 export function Animations(){
     //menu hamburguer
@@ -8,49 +9,59 @@ export function Animations(){
     //Search scroll animations
     if(location.hash.includes("#/search")) animationSearch();
 
-    //Floating form
-    gsap.to(".form",{duration: 2, y: "-3%",repeat:-1, yoyo:true, ease:"linear"})
-
-    //Transparent header on home's top ES AL PEDO CON FONDO OSCURO
+    //Transparent header on home's top
     if(location.hash === "#/" || !location.hash){
         const $header = document.querySelector(".header");
         
         if(window.scrollY === 0) {
-            $header.style.backgroundColor = "transparent";
+            $header.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
             $header.style.backdropFilter = "blur(0)"
         }
         window.addEventListener("scroll", e => {
+            console.log($header.style)
             if(window.scrollY !== 0) {
-                $header.style.backgroundColor = "rgba(0 0 0 /.7)";
+                $header.style.backgroundColor = "rgba(0, 0, 0, 0.3)";
                 $header.style.backdropFilter = "blur(5px)"
             }else {
                 $header.style.backgroundColor = "transparent";
                 $header.style.backdropFilter = "blur(0)"
             }
         })
+
     }
     
-    //last post arrow
-    if(location.hash === "#/" || !location.hash){
-        let arrow;
-        setTimeout(() => {
-            arrow = document.querySelector(".arrow");
-            
-            let tl = gsap.timeline({repeat: -1, repeatDelay: .4})
+     //home page animations 
+     if(location.hash === "#/" || !location.hash){
+         let waiting  = setInterval(() => {                  //a veces falla.. idk why
+            //last post arrow     
+            if(document.querySelector(".arrow")){
+                let tl = gsap.timeline({repeat: -1, repeatDelay: .4})
                 .to(".arrow", {duration: .2, y: "30%", repeat: 2, yoyo: true, ease:"linear"})
                 .to(".arrow", {duration: .2, y: "0%", ease:"linear"})
+            }
+            
+            //home page text fade in + typewriter effect
+            if(document.querySelector(".home-section-top-text") && document.querySelector(".home-section-top-animation")) {
+                
+                gsap.timeline()
+                    .from(".home-section-top-text",{duration:1.5, opacity: 0, x: "-200%"})
+                    .to("#home-h2", {opacity: 1,  filter:"blur(0px)", duration: 3},"<")
+                    .to("#home-h2-middle", {text:"... and GSAP!", ease:"power1.in", duration:2}, "-=1")
+                    .to("#home-h2-end", {text:"_", repeat: -1, yoyo: true, repeatDelay: .3, duration: .2}, "<")
+                    .to("#home-h3",{duration:1,filter:"blur(0px)", opacity:1, y: "0%"}, "<");
+                
+                //hero page geometric animation
+                HomeAnimation();
+
+                clearInterval(waiting);
+
+            } else console.log("not yet");
+
         },500)
     }
 
-    //home page text fade in
-    setTimeout(() => {
-        const tl = gsap.timeline()
-            .to("#home-h2",{duration:1.5, opacity:1, x: "0%"})
-            .to("#home-h3",{duration:1, opacity:1, y: "0%"});
-    },500)
-
     //smooth fade in search header
-    if(location.hash.includes("#/search") || !location.hash){
+    if(location.hash.includes("#/search")){
         if(location.hash.includes("#/search?search=")){
             gsap.set(".search-header", {duration: 0, y: "0%", opacity: 1})
             return;
@@ -60,26 +71,27 @@ export function Animations(){
         },500)
     }
 
-    //----------------------------------------------------------------
     //secondary home cards fade in
     const observer = new IntersectionObserver(entries => {
-
-        for(let i = 0; i<entries.length; i++){
+        for(let i = 0; i < entries.length; i++) {
             if(entries[i].isIntersecting) {
-                setTimeout(()=>{
-                    console.log(entries[i])
-
-                },200)
-                gsap.from(entries[i].target, {y: "100%", duration: .5, delay: .2});
+                let delay = 200*i + "ms";
+                entries[i].target.style.transitionDelay = delay;
+                entries[i].target.classList.add("visible")
             }
         }
     })
-
     setTimeout(() => {
         const $secondaryCards = document.querySelectorAll(".home-card-secondary")
         $secondaryCards.forEach(card => {
             observer.observe(card);
         })
-    },500)
+    },5000)
 
+    document.addEventListener("scroll", e=> {
+       console.log(window.scrollY)
+       
+    })
+
+  
 };

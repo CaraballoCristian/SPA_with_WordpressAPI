@@ -11,7 +11,6 @@ export function Header(){
     $headerContainer.classList.add("header-container");
 
     $headerContainer.appendChild(Title());
-    //$headerContainer.appendChild(DarkMode());
     $headerContainer.appendChild(Menu());
     $headerContainer.appendChild(HambMenu());
     

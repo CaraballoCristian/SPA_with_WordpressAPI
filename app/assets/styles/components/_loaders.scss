@@ -1,9 +1,25 @@
 @import "../utils/mixins";
 @import "../utils/variables";
+@import "../utils/mixins";
+@import "../utils/variables";
 
+.home-loader{
+    @include position(fixed, 0, 0, 0, 0, 999);
+    background-color: #222;
+    display: grid;
+    place-content: center;
+    & > img{
+        width: 100px;
+        font-size: 4rem;                          //CLAMP IT
+        aspect-ratio: 1 / 1;
+    }
+    transition: all .5s ease;
+}
+.fade-loader{
+    opacity: 0;
+}
 .loader-post-card{
     @include flex(column, space-between, center);
-    
     height: 350px;
     width: 90%;
     max-width: 300px;
@@ -16,6 +32,8 @@
     border-radius: 10px;
 
     overflow: hidden;
+    
+    transition: all .5s ease;
 
     & div{
         border-radius: 5px;
