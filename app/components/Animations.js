@@ -1,4 +1,4 @@
-import { AnimationMenu } from "./AnimationSearch.js";
+import { AnimationSearch } from "./AnimationSearch.js";
 import { AnimationMenu } from "./AnimationMenu.js";
 import { HomeAnimation } from "./HomeAnimation.js";
 
@@ -7,7 +7,7 @@ export function Animations(){
     AnimationMenu();
 
     //Search scroll animations
-    if(location.hash.includes("#/search")) animationSearch();
+    if(location.hash.includes("#/search")) AnimationSearch();
 
     //Transparent header on home's top
     if(location.hash === "#/" || !location.hash){
