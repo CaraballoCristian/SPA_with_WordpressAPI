@@ -10,7 +10,7 @@ export function validateForm(){
     const regexPatterns = {
         firstname: /^[a-z\s]{4,15}$/i,
         lastname: /^[a-z\s]{4,15}$/i,
-        email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/i,
+        email: /^([a-z_\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/i,
         subject: /^[a-z-]{6,15}$/i,
         comment: /^[\s\S]{1,255}$/i,
     }
@@ -56,10 +56,12 @@ export function validateForm(){
     //SUBMIT TO EMAIL
     d.addEventListener("submit", e => {
         e.preventDefault(); 
+        let form = document.querySelector("#form")
         
-        if(e.target !== "#form") return;
+        if(e.target !== form) return;
 
         let ok = true;
+
         $inputs.forEach(input => {
             if(input.classList.contains("form-invalid")) ok = false;
         })
