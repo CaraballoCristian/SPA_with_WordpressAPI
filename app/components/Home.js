@@ -2,6 +2,7 @@ import { getCard } from "../helpers/getCard.js";
 
 export function Home(homeCard,cards){
 
+    //HOME CARDS ROUTING
     document.addEventListener("click", e => {
         if(e.target.matches(".home-card-main") || e.target.matches(".home-card-main *")){
             location.hash = getCard(e.target,"home-card-main").getAttribute("data-slug");
@@ -48,5 +49,4 @@ export function Home(homeCard,cards){
     </div>
 
     `
-    
 }

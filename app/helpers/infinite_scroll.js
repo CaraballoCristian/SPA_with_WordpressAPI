@@ -7,14 +7,14 @@ export async function infiniteScroll() {
     const d = document,
         w = window;
     
-        let apiURL,
+    let apiURL,
         Component,
         section;
 
     w.addEventListener("scroll", async e => {
         let {scrollTop, clientHeight, scrollHeight} = d.documentElement,
             {hash} = w.location;
-
+            
         if((scrollTop + clientHeight >= scrollHeight) && (location.hash !== "#/search")){
             api.page++;
 
@@ -27,6 +27,7 @@ export async function infiniteScroll() {
                 section = ".search-section";
                 apiURL = `${api.SEARCH}&page=${api.page}`;
                 Component = SearchCard;
+
             }else return;
             
             d.querySelector(".loader").style.display = "block";
@@ -40,7 +41,8 @@ export async function infiniteScroll() {
                         if(!hash.includes("#/search")) html += Component(posts[i]);
                         else{
                             let id = posts[i]._embedded.self[0].author;
-                            //only ask for posts with an author
+
+                            //ONLY ASK FOR POST WITH AN AUTHOR (THOSE WHO DOESN'T HAVE ONE ARE GENERALLY MISSING POSTS AND THROW ERROR)
                             if(id) {
                                 await ajax({
                                     url: `${api.USER}/${id}`,
@@ -51,7 +53,6 @@ export async function infiniteScroll() {
                             }
                         }
                     }
-
                     d.querySelector(section).insertAdjacentHTML("beforeend", html);
                     
                     d.querySelector(".loader").style.display = "none";

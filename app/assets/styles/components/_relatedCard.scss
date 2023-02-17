@@ -50,7 +50,7 @@
         }
     }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
     .related-card{
         @include flex(row, start);
 

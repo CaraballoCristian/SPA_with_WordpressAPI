@@ -3,7 +3,6 @@
 
 .home-section{
 
-
     margin-top: -5rem;
     
     //MODIFICAR SOLAMENTE LA LUMINOSIDAD
@@ -25,11 +24,11 @@
         
             color: #eee;                                                              //variable colors
             z-index: 4  ;
+            
             &-about{
                 min-width: 400px;
 
                 letter-spacing: 2px;
-                line-height: 3rem;
             }
             #home-h3{
                 transform: translate(0%, 200%);
@@ -58,9 +57,9 @@
         }
     }
     
-    &-bottom{   
+    .home-section-bottom{ 
         min-height: 70vh;
-
+        padding: 0;
         @include flex(column, center, center);
         
         margin-top: 5rem;
@@ -84,16 +83,16 @@
 
         &-cardbox{
             height: 85%;
-            padding-block:1rem;
+            width: 100%;
+            padding:1rem .5rem;
         }
         &-postsbox{
             margin-top: 10rem;
-            width: 100%;
+            width: 90%;
             min-height: 100vh;
-            padding-block:1rem;
+            padding:1rem .5rem;
 
             &-linkbox{
-                padding: 2rem 4rem;
                 &-link{
                     width: 15rem;
                     height: 3.5rem;
@@ -106,7 +105,7 @@
                     &:hover{
                         border-color: #0a1756;
                         & span{
-                            transform: translateX(225px - 40px);
+                            transform: translateX(11.5rem);
                             background-color: #0a1756 !important;
                             
                         }
@@ -126,11 +125,38 @@
         &-text{
             margin-top: 7rem;
             width: 90%;
-        }/* 
-        &-animation{
-            margin-top: 0rem;
-            width: 90%;
-        } */
+        }
+    }
+   
+}
+@media screen and (max-width: 700px) {
+    .home-section{
+        &-top{
+            padding: 0;
+            &-text{
+                border:solid white 2px;
+                width: 100%;
+            }
+        }
+    }
+    .same,
+    #home-h3{
+        font-size: clamp(.5rem, .3rem + 2vw, 1.2rem) !important;
+    }
+
+    .home-section-bottom{
+        &-postsbox{
+            width: calc(100% - 1rem)!important;
+            padding-inline: 0 !important;
+
+            &-linkbox{
+
+                &-link{
+                    margin: 0;
+                }
+            }
+        }
     }
 }
+
 

@@ -9,7 +9,7 @@ import { relatedCard } from "./RelatedCard.js";
 import Loaders from "./Skeletons.js";
 
 let query = "",
-previo;
+    prev;
 
 export async function Router(){
 
@@ -19,26 +19,29 @@ export async function Router(){
         $root = d.getElementById("root");
         
     let { hash } = w.location; 
-                                                                
+
+    //SETTING BACKGROUND FOR EVERY SECTION BUT HOME
     if(hash !== "#/" && hash){
         document.getElementById("root").style.background = `radial-gradient(circle at -10% -10%,#ff32c8ab, 25%, transparent 50%),
                                                             radial-gradient( circle at 105% 35%, #ff32caab, 20%,#0a1756 60%)`;
         document.getElementById("root").style.backgroundAttachment = `fixed`;
     }
 
+    //HOME SECTION
     if(!hash || hash === "#/"){
+        //TO AVOID IMG BACKGROUND WHEN SWITCHING FROM ANY POST
         document.getElementById("root").style.background = "none";
 
-        previo = "home"
+        prev = "home"
         const $homeLink = document.querySelector(".menu a[href='#/']");
         $homeLink.classList.add("selected");
 
+        //CREATING SPIN-LOADER
         let $homeLoader  = d.createElement("div");
         $homeLoader.classList.add("home-loader");
         $homeLoader.innerHTML = `
             <img src="app/assets/img/spin-loader.svg">
         `
-
         $root.appendChild($homeLoader);
 
         await ajax({
@@ -47,8 +50,10 @@ export async function Router(){
                 const $home = d.createElement("section");
                 $home.classList.add("home-section");
                 
+                //CRETING LAST POST CARD
                 const $homeCard = HomeCard(posts[0], "home-card-main");
                 
+                //CREATING ALL OTHER HOME CARDS CONTAINER AND ADDING THE CARDS TO IT
                 const $cards = d.createElement("div");
                 $cards.classList.add("home-cards-box");
 
@@ -56,10 +61,11 @@ export async function Router(){
                     $cards.innerHTML += HomeCard(posts[i], `secondary-card-${i} home-card-secondary`);
                 }
 
+                //CREATING HOME SECTION WITH ALL THE CARDS CREATED BEFORE
                 $home.innerHTML = Home($homeCard, $cards);
                 
+                //APPENDIGN HOME SECTION TO MAIN, AND REMOVING LOADER AFTHER THAT
                 let aux = d.querySelector(".home-loader");
-                
                 setTimeout(() => {
                     $main.appendChild($home);
                     $homeLoader.classList.add("fade-loader") ;
@@ -70,13 +76,18 @@ export async function Router(){
             }
         });
 
-    }else if(hash === "#/posts"){
-
-        previo = "posts"
+    }//ALL POSTS SECTION
+    else if(hash === "#/posts"){
+        //NO FOOTER IN POSTS SECTION
         d.querySelector(".footer").style.display = "none";
+        
+        prev = "posts"
+        const $postsLink = document.querySelector(".menu a[href='#/posts']");
+        $postsLink.classList.add("selected");
 
-        let $containerLoader;
-        let aux;
+        //CREATING SKELETONS FOR EVERY CARD ONLY WHEN ITS THE FIRST SECTION LOAD
+        let $containerLoader,
+            aux;
         
         if(api.page === 1){
             $containerLoader = d.createElement("section");
@@ -88,9 +99,6 @@ export async function Router(){
             aux = d.querySelector(".skeleton-section");
         }
 
-        const $postsLink = document.querySelector(".menu a[href='#/posts']");
-        $postsLink.classList.add("selected");
-
         await ajax({
             url: api.POSTS,
             cbSuccess: (posts) => {
@@ -100,53 +108,50 @@ export async function Router(){
                 posts.forEach((post) => $container.innerHTML += PostCard(post));
                 
                 setTimeout(() => {
-                    $main.removeChild(aux)
-                    $main.appendChild($container); 
+                   $main.replaceChild($container,aux);
                 }, 2000);
             }
         });
-    
-    
-    }else if (hash.includes("#/search")){
+
+    }//SEARCH SECTION
+    else if (hash.includes("#/search")){
+        //NO FOOTER IN SEARCH SECTION 
         d.querySelector(".footer").style.display = "none";
         
         const $searchLink = document.querySelector(".menu a[href='#/search']");
         $searchLink.classList.add("selected");
 
         //----------------------------------------------------------------
-        //empty search
+        //EMPTY SEARCH
         if(hash === "#/search?search=") {
             let warn = d.createElement("h2");   
             warn.classList.add("warn");
             warn.innerHTML = `<h2 class="warn">Please, search something!<h2/>`
-            $main.removeChild(aux);
-            $main.appendChild(warn)
+            $main.replaceChild(warn, aux);
             return;
-        }
-        //normal search
+
+        }//VALID SEARCH
         else if(hash.includes("#/search?search=")) {
             query = location.hash.replace("#/search?search=", "");
-            previo = "search";
-        }
-        //just entering search tab or recovering last search data
+            prev = "search";
+
+        }//JUST ENTERING SEARCH TAB OR RECOVERING LAST SEARCH DATA
         else {
-            //just entering section
+            //JUST ENTERING SEARCH TAB
             if(!query) return;
 
-            //recovering last search data 
-            //IMPORTANTE!! luego de una busqueda, si se va hacia adelante, y luego 2 hacia atras, al ir hacia adelante again, se pierde el next de la busquda
-            //QUERY to POST back QUERY back SEARCH to QUERY (aca deberia estar el post en next, pero nop)
-            //IMPORTANTE 2!! Al ir desde HOME a SEARCH y QUERY.. y luego volver a SEARCH Y HOME.. Al darle hacia adelante, salta search y va a QUERY
-            //de momento me conformo con esto e iré pensando como solucionarlo en el futuro
-            else if(query && previo !== "search") {
-                previo = "search";
+            //RECOVERING LAST SEARCH DATA
+            else if(query && prev !== "search") {
+                prev = "search";
                 location.hash = `#/search?search=${query}`   
             }
             return;
         }
-     
-        d.querySelector(".search-form input").value = query;
+        
+        //REPLACING SYMBOLS THAT REPRESENT SPACES WITH ACTUAL SPACES
+        d.querySelector(".search-form input").value = query.replaceAll("%20", " ");
 
+        //CLEANING SEARCH BY CLICKING THE INPUT CROSS (CHROME/BRAVE)
         d.addEventListener("search", e => {
             if(!e.target.matches("input[type='search']")) return;
             if(!e.target.value) {
@@ -155,10 +160,10 @@ export async function Router(){
             }
         })
 
+        //CREATING SKELETONS AND APPENDING THEM TO MAIN
         let $containerSearchLoader,
             aux;
-        
-        //lazy loading
+
         if(api.page === 1 && query){
             $containerSearchLoader= d.createElement("section")
             $containerSearchLoader.classList.add("search-section", "skeleton-section");
@@ -170,7 +175,6 @@ export async function Router(){
             $main.appendChild($containerSearchLoader);
             aux = d.querySelector(".skeleton-section");
         }
-
         
         //--------------------------------------------------------------
         await ajax({
@@ -194,22 +198,22 @@ export async function Router(){
                     }
 
                     setTimeout(() => {
-                        $main.removeChild(aux);
-                        $main.appendChild($containerSearch);
+                        $main.replaceChild($containerSearch, aux);
                     }, 1000);
                     
                 }else {
                     $containerSearch.innerHTML = `<h2 class="warn">Sorry, we couldn't find matches for: <mark> ${query} </mark><h2/>`
-                    $main.removeChild(aux);
-                    $main.appendChild($containerSearch)
+                    $main.replaceChild($containerSearch, aux);
                 }
             }
         })
 
 
-    }else {
-        
-        previo = "post"
+    }//SINGLE POST SECTION
+    else {
+        prev = "post"
+
+        //CREATING SKELETON FOR POST SECTION
         let $htmlLoader = d.createElement("section");
         $htmlLoader.innerHTML = Loaders.postLoader();
         $htmlLoader.classList.add("post-section", "skeleton-section");
@@ -217,19 +221,21 @@ export async function Router(){
         $main.appendChild($htmlLoader);
 
         let slugUrl = hash.slice(2);
-
         await ajax({
             url: `${api.POST}${slugUrl}`,
             cbSuccess: async post => {
+                //OBTAINING RELATED CARDS
                 let related = post[0]["jetpack-related-posts"],
                     htmlRelated = "",
                     author = {};
 
+                    //SORTING THEM BY DATE (ID'S ARE INCREMENTAL, SO BIGGER ID MEANS NEAREST DATE)
                     related.sort((a,b) => {
                         if(a.id > b.id) return -1; 
                         else return 1;
                     })
 
+                //ASKING API FOR EVERY RELATED CARD DATA AND APPENDING THEM TO A CONTAINER
                 for(let i = 0; i < related.length; i++){
                     await ajax({
                         url: `${api.ID}/${related[i].id}`,
@@ -239,6 +245,7 @@ export async function Router(){
                     }); 
                 }
 
+                //ONLY ASK FOR POST WITH AN AUTHOR (THOSE WHO DOESN'T HAVE ONE ARE GENERALLY MISSING POSTS AND THROW ERROR)
                 let id = post[0].author;
                 if(id) {
                     await ajax({
@@ -247,6 +254,7 @@ export async function Router(){
                     });
                 }
 
+                //CREATING AND APPENDING ALL POST DATA TO MAIN
                 setTimeout(() => {
                    $main.innerHTML = Post(post[0], htmlRelated, author);
                 }, 3000);

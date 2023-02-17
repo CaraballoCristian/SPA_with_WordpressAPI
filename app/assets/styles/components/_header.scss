@@ -9,12 +9,19 @@
     height: 5rem;
  
     backdrop-filter: blur(5px);
-    background-color: rgba(0 0 0 /.5);                //variable
+    background-color: transparent;                //need to fix it! no hace el trabajo desde js!
  
     white-space: nowrap;
 
     transition: all .5s ease;
-
+    
+    & > span{
+        @include position(absolute, 0, 0, 0, 0, -1);
+        background-color: rgba(0 0 0 /.5);
+        opacity:1;
+        backdrop-filter: blur(5px);
+        transition: all .5s ease;
+    }
     &-container{
         @include flex(row, space-between);
 

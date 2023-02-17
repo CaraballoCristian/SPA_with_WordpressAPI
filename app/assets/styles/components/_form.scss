@@ -89,9 +89,15 @@
             
             border-radius: 10px;
             border: none;
-      
+            
+            transition: all .5 ease;
+            
             &:hover{
+                cursor: pointer;
                 opacity: .9;
+            }
+            &:focus{
+                outline: none;
             }
         }
     }
@@ -103,9 +109,10 @@
         &-top,
         &-middle{
             flex-direction: column;
+            .form-input-box-input{
+                padding: 1rem !important;
+            }
             
-        }
-        &-input-box > span{
         }
     }
 }

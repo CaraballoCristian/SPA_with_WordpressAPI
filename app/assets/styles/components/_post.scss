@@ -2,6 +2,9 @@
 @import "../utils/variables";
 
 .post-section{
+    *{
+        border: solid red 1px; 
+    }
     @include flex(column);
 
     width:100%;
@@ -23,7 +26,6 @@
 
             width: min(60%, calc(1150px - 4rem));
 
-            padding-inline:2rem;
 
             & h2{
                 margin-block:1rem;
@@ -143,16 +145,23 @@
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 900px) {
     
     .post-section{
         &-header{
-            width: 100%;
+            width: 100% !important;
 
             padding-inline:1rem;
 
-            .post-section-header-left{
-                width: 100% //!important;          //solucionado al seleccionar la clase especifica
+            .post-section-header{
+                &-left{
+
+                    width: 100% !important;          //solucionado al seleccionar la clase especifica
+                    width: max(96px, 20%);
+                    &-author{
+                        
+                    }
+                }
             }
             &-right{
                 display: none;
@@ -164,7 +173,7 @@
             
             width: 100%;
 
-            padding-inline:1rem;
+            padding-inline:0rem;
             
             &-main{
                 width: calc(100% - 2rem);
@@ -172,8 +181,8 @@
 
             &-aside{
                 width: calc(100% - 2rem);
-                min-height: 500px;
-
+                min-height: 500p;
+                min-width: 250px;
                 margin-top: 2rem;
 
                 border-left: none;

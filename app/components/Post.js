@@ -8,16 +8,18 @@ export function Post(props, related, author){
             ? author.avatar_urls[96]
             : "app/assets/img/no-author.png";
  
+    //USING POST COVER IMG AS BACKGROUND
     document.getElementById("root").style.backgroundImage =`radial-gradient(circle at -10% -10%,#ff32c8ab, 25%, transparent 50%),
                                                             radial-gradient( circle at 105% 35%, #ff32caab, 20%,#0a1756 60%), url("${props.featured_media_src_url}")`;
     document.getElementById("root").style.backgroundSize = "cover";  
 
     document.addEventListener("click", e => {
+        //RELATED CARD ROUTING
         if(e.target.matches(".related-card figure") || e.target.matches(".related-card figure *")){
             location.hash = getCard(e.target,"related-card").getAttribute("data-slug");
         }
 
-        //avoiding hash navigation inside post to break everything XD   
+        //AVOIDING HASH NAVIGATION INSIDE THE POST AND USING JS INSTEAD  
         if(e.target.matches(".post-section-content *") && e.target.getAttribute("href").includes("#")){
             e.preventDefault();
 

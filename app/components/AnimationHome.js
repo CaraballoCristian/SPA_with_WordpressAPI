@@ -1,4 +1,4 @@
-export function HomeAnimation(){    
+export function AnimationHome(){    
     const box = document.querySelector(".home-section-top-animation");
 
     const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);

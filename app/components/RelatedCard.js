@@ -6,7 +6,7 @@ export function relatedCard(props){
         dateFormat = CalculateDate(new Date(date)),
         titleFormat;
 
-        if(title.rendered.length > 30) titleFormat = title.rendered.slice(0,50) + " ...";
+        if(title.rendered.length > 30) titleFormat = title.rendered.slice(0,30) + " ...";
         else titleFormat = title.rendered;
 
 return `

@@ -10,9 +10,6 @@
     max-width: 300px;   
 
     margin: 1rem auto;
-    
-    backdrop-filter: blur(5px);
-
 
     border-radius: 10px;
 
@@ -45,6 +42,7 @@
             &-img{
                 height: 100%;
                 width: fit-content;
+                object-fit: cover;
             }
             overflow: hidden;
         }   

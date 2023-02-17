@@ -1,97 +1,87 @@
 import { AnimationSearch } from "./AnimationSearch.js";
 import { AnimationMenu } from "./AnimationMenu.js";
-import { HomeAnimation } from "./HomeAnimation.js";
+import { AnimationHome } from "./AnimationHome.js";
 
 export function Animations(){
-    //menu hamburguer
+    //HAMBURGUER MENU
     AnimationMenu();
 
-    //Search scroll animations
-    if(location.hash.includes("#/search")) AnimationSearch();
-
-    //Transparent header on home's top
+    //HOME SECTION ANIMATIONS     
     if(location.hash === "#/" || !location.hash){
-        const $header = document.querySelector(".header");
-        
-        if(window.scrollY === 0) {
-            $header.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-            $header.style.backdropFilter = "blur(0)"
-        }
+    
+        //TRANSPARENT HEADER ON HOME'S TOP
+        const $headerSpan = document.querySelector(".header span");
+
+        if(window.scrollY === 0) $headerSpan.style.opacity = 0;
+
         window.addEventListener("scroll", e => {
-            console.log($header.style)
-            if(window.scrollY !== 0) {
-                $header.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-                $header.style.backdropFilter = "blur(5px)"
-            }else {
-                $header.style.backgroundColor = "transparent";
-                $header.style.backdropFilter = "blur(0)"
+            if(window.scrollY !== 0) $headerSpan.style.opacity = 1;
+            else $headerSpan.style.opacity = 0;
+        })
+        
+        //OBSERVER FOR SECONDARY CARDS ANIMATION
+        const observer = new IntersectionObserver(entries => {
+            for(let i = 0; i < entries.length; i++) {
+                if(entries[i].isIntersecting) {
+                    let delay = 200*i + "ms";
+                    entries[i].target.style.transitionDelay = delay;
+                    entries[i].target.classList.add("visible")
+
+                } else if(window.innerHeight < entries[i].boundingClientRect.top) {
+                    entries[i].target.classList.remove("visible")
+                }
             }
         })
+        
+        //INTERVAL UNTIL EVERYTHING IS LOADED
+        let loop  = setInterval(() => {
+            //HOME PAGE TEXT FADE-IN AND TYPEWRITER EFFECT
+            if(document.querySelector(".home-section-top-text")             //HOME TEXT IS LOADED
+                && document.querySelector(".home-section-top-animation")    //HOME GEOMETRIC ANIMATION IS LOADED
+                && document.querySelector(".arrow")                         //LAST POST ARROW IS LOADED
+                && document.querySelectorAll(".home-card-secondary")) {     //SECONDARY HOME CARDS ARE LOADED
 
-    }
-    
-     //home page animations 
-     if(location.hash === "#/" || !location.hash){
-         let waiting  = setInterval(() => {                  //a veces falla.. idk why
-            //last post arrow     
-            if(document.querySelector(".arrow")){
-                let tl = gsap.timeline({repeat: -1, repeatDelay: .4})
-                .to(".arrow", {duration: .2, y: "30%", repeat: 2, yoyo: true, ease:"linear"})
-                .to(".arrow", {duration: .2, y: "0%", ease:"linear"})
-            }
-            
-            //home page text fade in + typewriter effect
-            if(document.querySelector(".home-section-top-text") && document.querySelector(".home-section-top-animation")) {
+                //LAST POST ARROW ANIMATION
+                gsap.timeline({repeat: -1, repeatDelay: .4})
+                    .to(".arrow", {duration: .2, y: "30%", repeat: 2, yoyo: true, ease:"linear"})
+                    .to(".arrow", {duration: .2, y: "0%", ease:"linear"})
                 
+                //HOME TEXT ANIMATION
                 gsap.timeline()
                     .from(".home-section-top-text",{duration:1.5, opacity: 0, x: "-200%"})
                     .to("#home-h2", {opacity: 1,  filter:"blur(0px)", duration: 3},"<")
                     .to("#home-h2-middle", {text:"... and GSAP!", ease:"power1.in", duration:2}, "-=1")
                     .to("#home-h2-end", {text:"_", repeat: -1, yoyo: true, repeatDelay: .3, duration: .2}, "<")
                     .to("#home-h3",{duration:1,filter:"blur(0px)", opacity:1, y: "0%"}, "<");
-                
-                //hero page geometric animation
-                HomeAnimation();
 
-                clearInterval(waiting);
+                //HOME GEOMETRIC ANIMATION
+                AnimationHome();
 
-            } else console.log("not yet");
+                //SECONDARY CARDS ANIMATION
+                const $secondaryCards = document.querySelectorAll(".home-card-secondary")
+                $secondaryCards.forEach(card => observer.observe(card))
 
-        },500)
-    }
-
-    //smooth fade in search header
-    if(location.hash.includes("#/search")){
-        if(location.hash.includes("#/search?search=")){
-            gsap.set(".search-header", {duration: 0, y: "0%", opacity: 1})
-            return;
-        }
-        setTimeout(() => {
-            gsap.to(".search-header", {duration: .5, y: "0%", opacity: 1, ease:"linear"})
-        },500)
-    }
-
-    //secondary home cards fade in
-    const observer = new IntersectionObserver(entries => {
-        for(let i = 0; i < entries.length; i++) {
-            if(entries[i].isIntersecting) {
-                let delay = 200*i + "ms";
-                entries[i].target.style.transitionDelay = delay;
-                entries[i].target.classList.add("visible")
+                clearInterval(loop);
             }
-        }
-    })
-    setTimeout(() => {
-        const $secondaryCards = document.querySelectorAll(".home-card-secondary")
-        $secondaryCards.forEach(card => {
-            observer.observe(card);
-        })
-    },5000)
-
-    document.addEventListener("scroll", e=> {
-       console.log(window.scrollY)
-       
-    })
-
-  
+        },500)
+    }
+    
+    //SEARCH SECTION ANIMATIONS
+    if(location.hash.includes("#/search")){
+        //FADE-IN SEARCH HEADER
+        gsap.to(".search-header", {duration: .5, y: "0%", opacity: 1, ease:"linear"})
+        
+        //WHEN ASKING FOR A QUERY, START LOOPING
+        if(location.hash.includes("#/search?search=")){
+            let loop = setInterval(() => {
+                //IF ELEMENTS ARE NOT LOADED, RETURN
+                if(!document.querySelectorAll(".search-card")[1]) return;
+                
+                //ANIMATION WHEN SCROLLING SEARCH CARDS
+                AnimationSearch();
+                clearInterval(loop);    
+            },200) 
+        } 
+    }
+    
 };

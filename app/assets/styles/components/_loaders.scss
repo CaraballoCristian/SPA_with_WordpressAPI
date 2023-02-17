@@ -197,9 +197,9 @@
             }
             .loader-search-card-body-content-link{
                 height: 2.5rem;
-                width: max(20%, 9rem);
+                width: min(70%, 9rem);
 
-                border-radius: 50vh;
+                border-radius: 10px;
                 margin-inline: auto 1rem;
             }
         }
@@ -319,7 +319,6 @@
 
             
             &-container{
-                @include position(sticky, 7rem);
                 &-title{
                     width: 40%;
                     height: 1.5rem;

@@ -1,3 +1,4 @@
+//RETURNS BROWSER DEFAULT FONT SIZE
 export function getDefaultFontSize() {
     const el = document.createElement('div');
     el.style.width = '1rem';

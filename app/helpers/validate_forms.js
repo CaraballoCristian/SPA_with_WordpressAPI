@@ -45,7 +45,7 @@ export function validateForm(){
         });
     });
 
-    //TO AVOID SPAN REMAINS WHEN INPUT ISN'T FOCUSED
+    //THIS AVOID SPAN TO REMAINS WHEN INPUT ISN'T FOCUSED
     d.addEventListener("click", (e) => {
         if((e.target.matches(".form") || e.target.matches(".form-input") 
         && (!e.target.classList.contains("span-err")))){
@@ -56,6 +56,8 @@ export function validateForm(){
     //SUBMIT TO EMAIL
     d.addEventListener("submit", e => {
         e.preventDefault(); 
+        
+        if(e.target !== "#form") return;
 
         let ok = true;
         $inputs.forEach(input => {

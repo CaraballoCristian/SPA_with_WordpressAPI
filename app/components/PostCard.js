@@ -7,8 +7,8 @@ export function PostCard(props){
             ? _embedded.author[0].avatar_urls["48"]
             : "app/assets/img/no-author.png",
         authorName = _embedded.author[0].name
-        ? _embedded.author[0].name
-        : "John Doe",
+            ? _embedded.author[0].name
+            : "John Doe",
         urlCover = _embedded["wp:featuredmedia"] 
             ? _embedded["wp:featuredmedia"][0].source_url 
             : "app/assets/img/dummy-cover.png";
