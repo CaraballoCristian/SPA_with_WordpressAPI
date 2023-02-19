@@ -11,8 +11,8 @@ export function Footer(){
         <div class="footer-bottom"> 
             <p>Cristian Caraballo - 2023</p>   
             <div class="footer-bottom-media">
-                <div id="btn-github" class="footer-bottom-media-github"><img src="/app/assets/img/gh-logo.png"></div>
-                <div id="btn-linkedin" class="footer-bottom-media-linkedin"><img src="/app/assets/img/linked.png"></div>
+                <div id="btn-github" class="footer-bottom-media-github"><img src="app/assets/img/gh-logo.png"></div>
+                <div id="btn-linkedin" class="footer-bottom-media-linkedin"><img src="app/assets/img/linked.png"></div>
             </div>
         </div>
     `
