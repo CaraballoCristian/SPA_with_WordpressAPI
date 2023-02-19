@@ -1,6 +1,63 @@
-//utilizar custom properties, para facilitar el dark mode
-//---------------COLORS----------------
+:root{
+    //-----------DARK MODE UTILS-----------
+    //CURRENT VALUES
+    --theme-text: #222;
+    --theme-background: #eee;
+    --theme-skeleton-background: #ddd;
+    --theme-skeleton-element: #ccc;
+    --theme-skeleton-shine: #eee;
+    //LIGHT VALUES
+    --theme-light-text: #222;
+    --theme-light-background: #eee;
+    --theme-skeleton-light-background: #ddd;
+    --theme-skeleton-light-element: #ccc;
+    --theme-skeleton-light-shine: #eee;
+    //DARK VALUES
+    --theme-dark-text: #eee;
+    --theme-dark-background: #222;
+    --theme-skeleton-dark-background: #222;
+    --theme-skeleton-dark-element: #333;
+    --theme-skeleton-dark-shine: #444;
+    //DELAY
+    --delay: .3s;
+    //---------------COLORS----------------
+    --background-gradient: radial-gradient(circle at -10% -10%,#ff32c8ab, 25%, transparent 50%),
+                           radial-gradient( circle at 105% 35%, #ff32caab, 20%,#0a1756 60%);
 
+    --accent-gradient: linear-gradient(135deg, #FF6D28, 10%, #ff32ca);
 
-//utilizar sass variables para agilizar escritura "var.$ff-primary"
-//----------------FONTS-------------------
+    --clr-black: #222;
+    --clr-white: #eee;
+    --clr-ok: #0e700e;
+    --clr-err: #af414c;
+    
+    --clr-first: #0a1756;     // background color
+    --clr-second:#ff32ca;     // accent color
+    --clr-third: #2c3465;     // footer color
+    --clr-fourth:#4f5c89;     // input color
+
+    //---------------SHADOWS------------------
+    --shadow-black: 0px 0px 10px 5px rgba(34, 34, 34, .5);
+    --shadow-gradient: 0px 0px 40px 5px rgba(255, 50, 200, 0.5) ,0px 0px 40px 5px rgba(80, 42, 247, 0.6);
+    --shadow-gradient-second: 0px 0px 20px 10px rgba(255, 50, 200, 0.5) ,0px 0px 20px 10px rgba(80, 42, 247, 0.6);
+
+    //----------------FONTS-------------------
+    --ff-primary: font-family: 'Roboto', sans-serif;
+
+    --fw-1: 400;
+    --fw-2: 500;
+    --fw-3: 700;
+
+    /* @link https://utopia.fyi/type/calculator?c=280,12,1.2,1240,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+    --fs--2: clamp(0.52rem, calc(0.39rem + 0.73vw), 0.96rem);
+    --fs--1: clamp(0.63rem, calc(0.46rem + 0.96vw), 1.20rem);
+    --fs-0: clamp(0.75rem, calc(0.53rem + 1.25vw), 1.50rem);
+    --fs-1: clamp(0.90rem, calc(0.62rem + 1.63vw), 1.88rem);
+    --fs-2: clamp(1.08rem, calc(0.71rem + 2.11vw), 2.34rem);
+    --fs-3: clamp(1.30rem, calc(0.82rem + 2.72vw), 2.93rem);
+    --fs-4: clamp(1.56rem, calc(0.94rem + 3.51vw), 3.66rem);
+    --fs-5: clamp(1.87rem, calc(1.08rem + 4.52vw), 4.58rem);
+
+    
+}   

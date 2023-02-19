@@ -4,7 +4,7 @@ export function AnimationMenu(){
     const $hamb = document.querySelector(".hamb-menu-btn")
 
     //SETTING THE INITIAL VALUES OF EVERY NAV LINK
-    gsap.set(".menu-container a",{ opacity: 1, y: "0%"})
+    gsap.set(".menu-container .menu-item",{ opacity: 1, y: "0%"})
 
     //CROSS ANIMATION
     let toCross = gsap.timeline({paused: true})
@@ -16,21 +16,19 @@ export function AnimationMenu(){
     //MENU OPEN ANIMATION
     let toOpen = gsap.timeline({paused:true})
         .to(".menu", { opacity: 1, height:"100vh", duration :.4})
-        .from(".menu-container a",  { opacity: 0, y:"-200%", duration :.2, delay: .4 , stagger: {amount: .3, from: "end"}} );
+        .from(".menu-container .menu-item",  { opacity: 0, y:"-300%", duration :.2, delay: .4 , stagger: {amount: .3, from: "end"}} )
 
     //THOSE VALUES NEED TO BE RESET WHEN USER SWITCH TO A DIFERENT SECTION
     if(window.innerWidth >= breakpoint){
-        gsap.set(".menu-container a",{opacity: 1, y:"0%", duration: 0});
+        gsap.set(".menu-container .menu-item",{opacity: 1, y:"0%", duration: 0});
     } 
 
     document.addEventListener("click", e => {
         if(e.target.matches(".hamb-menu-btn") || e.target.matches(".hamb-menu-btn *")){
-            if(!$hamb.classList.contains("isOpen")){  
-                console.log("forward")    
+            if(!$hamb.classList.contains("isOpen")){ 
                 toCross.play();                          //for some reason, it does not work inside a master timeline
                 toOpen.play();
             }else{
-                console.log("reverse")    
                 toCross.reverse();
                 toOpen.reverse();
             }
@@ -45,13 +43,13 @@ export function AnimationMenu(){
         toOpen.revert();
 
         gsap.set(".menu", { opacity: 1, height: h})
-        gsap.set(".menu-container a",{ opacity: op, y: posY})
+        gsap.set(".menu-container .menu-item",{ opacity: op, y: posY})
         
         document.querySelector(".hamb-menu-btn").classList.remove("isOpen");
     }
 
     window.addEventListener("resize", e => {
-        if(window.innerWidth < breakpoint) reset(0, "-100%", "0");
+        if(window.innerWidth < breakpoint) reset(0, "-300%", "0");
         else reset(1, "0", "5rem");
     })   
     

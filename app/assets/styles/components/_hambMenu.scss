@@ -1,4 +1,4 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 .hamb-menu-btn{ 
@@ -6,7 +6,7 @@
 
     align-self: center;
     
-    height: clamp(1.2rem, 1rem + 3vw, 2rem);
+    height: clamp(1.2rem, 1rem + 3vw, 2rem);   //does not need to be linear
     aspect-ratio: 1 / 1;
     
     margin-left:1rem;
@@ -14,16 +14,16 @@
     
     background-color: transparent;
     
-    border-radius: 2px;
+    border-radius: toRem(2);
     border: none;
 
     display: none;
 
     & div{
         height: 15%;
-        border-radius: 2px;
+        border-radius: toRem(2);
         width: 100%;
-        background-color: #eee;                                              //COLORS VARIABLE
+        background-color: var(--clr-white);                                              //COLORS VARIABLE
     }
     &-top{
         @include position(absolute, 0);
@@ -40,7 +40,8 @@
         @include position(absolute, unset, 0);
     }
  }
- @media screen and (max-width: 900px) {
+ 
+ @media screen and (max-width: toEm(900)) {
     .hamb-menu-btn{
         display: block;
     }

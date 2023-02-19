@@ -1,17 +1,16 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 .home-card-main{
-
     position: relative;
     display: flex;
     
-    width: min(90%, 1600px);
-    margin-inline: auto;
+    width: min(90%, toRem(1600));
+    margin: .5rem auto;
     
     
-    box-shadow: 0px 0px 10px 5px rgba(34, 34, 34, .5);
-    border-radius: 20px;
+    box-shadow: var(--shadow-black);
+    border-radius: toRem(20);
     
     overflow: hidden;
 
@@ -19,15 +18,19 @@
 
     &:hover{
         cursor: pointer;
-        box-shadow: 0px 0px 40px 5px rgba(255, 50, 200, 0.5) ,0px 0px 40px 5px rgba(80, 42, 247, 0.6);
-        border-radius: 20px;
+        
+        box-shadow: var(--shadow-gradient);
+        
+        border-radius: toRem(20);
     }
-    
     &-imgbox{
         position: relative;
+
         min-height: 50%;
+        width: 55%;
+
         overflow: hidden;
-        width: 60%;
+
         &-img{
             display: flex;
             
@@ -39,7 +42,7 @@
         &::before{
             content:"";
             @include position(absolute, 0, 0, 0, 0);
-            background: linear-gradient(90deg,  transparent 30%, #eee 100%, transparent 10%);
+            background: linear-gradient(90deg,  transparent 30%, var(--theme-background) 100%, transparent 10%) ;
             z-index: 2;
         }
         &::after{
@@ -50,67 +53,70 @@
             
         }
     }
-  
-    
     &-container{
         @include flex(column, space-between);
 
-        width: 40%;
+        width: 45%;
         min-height: 50%;
         
         padding:1rem;
 
-        background-color: #eee;                                  //variable
+        background-color: var(--theme-background);
+        color: var(--theme-text);
+  
+        transition:all .5s ease;
 
         &-text{
             padding-inline: 2rem;
+
             &-title{
-                font-size: clamp(1rem, .5rem + 3vw, 2rem);                                         //clamp it!
+                font-size: var(--fs-1);
             }
             & p{
-                font-size: clamp(.9rem, .3rem + 2vw, 1.2rem);
+                font-size: var(--fs-0);
             }
         }
         
         &-author{
             display: flex;
+            align-items: center;
+            
             &-img{
-                
                 position: relative;
                 z-index: 10;
-                border-radius: 50%;
+
                 margin-right: 1rem;
+
+                border-radius: 50%;
+            }
+            &-figcaption{
+                &-name,
+                &-date{
+                    margin: 0;
+
+                    font-size: var(--fs-0);
+                    
+                    white-space: nowrap;
+                }
             }
         }       
     }
 }
 
-
-@media screen and (max-width: 900px){
-    .home-section{
-        &-bottom{
-            min-height: 80vh;
-            padding-inline:1rem;
-        }
-    }
-
-    .home-section-bottom-cardbox{
-    }
+@media screen and (max-width: toEm(900)){
     .home-card-main{
         @include flex(column, start);
-        width: clamp(200px, 100%, 600px) !important;
-        max-height: none;
-        min-height: 85vh;
+
+        width: clamp(toRem(200), 100%, toRem(600));
         
         margin: 1rem auto;
-        
-        background: #eee;                           //varibles
 
         &-imgbox{
             margin: 0;
             width: 100%;
+
             &-img{
-                height: 350px;
+                height: toRem(300);
 
                 object-position: center;
                 object-fit: cover;
@@ -118,41 +124,24 @@
             &::before{
                 content:"";
                 @include position(absolute, 0, 0, 0, 0);
-                background: linear-gradient(180deg,  transparent 50%, #eee 100%, transparent 10%);
+                background: linear-gradient(180deg,  transparent 50%, var(--theme-background) 100%, transparent 10%);
                 z-index: 2;
             }
         }
         &-container{    
             width: 100%;
-            min-height: calc(100% - 350px);
-            margin:0;
 
             padding: 1rem;
+            margin:0;
             
-            &-text{ 
-                min-height: 400px;
+            &-text{
+                height: 350px;
 
-                padding:0 1rem;
-                
-                &-title{
-                    margin:.5rem 0 0;
-                }
+                padding:0 .5rem;
             }   
-            
             &-author{
-
-                max-height: 64px;
-                width: 64px;
-
-                margin: 1rem;
-
-                &-figcaption{
-                    &-name{
-                        margin:.5rem 0;
-
-                        white-space: nowrap;
-                    }
-                }
+                width: toRem(56);
+                margin: .5rem;
             }
         }
     }

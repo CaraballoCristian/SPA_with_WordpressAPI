@@ -1,35 +1,36 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 .search-card{
     width: 90%;
+
     margin: 2rem auto;
     
-    box-shadow: 0px 0px 10px 5px rgba(34, 34, 34, .5);   
-    backdrop-filter: blur(5px);                                       //VARIABLE SHADOWS
-    background: #eee;
-    color: #222;
-
-    border-radius: 10px;
+    box-shadow: var(--shadow-black);   
+    backdrop-filter: blur(5px);
     
-    font-size: clamp(.5rem, .5rem + 4vw, .75rem);                                                //CORREGIR
+    background-color: var(--theme-background);
+    color: var(--theme-text);
 
-    transition: box-shadow .5s ease;
+    border-radius: toRem(10);
+
+    transition-property: box-shadow, background-color;
+    transition-duration: .5s;
+    transition-timing-function: ease;
     
-
     &:hover{
-        box-shadow: 0px 0px 20px 10px rgba(255, 50, 200, 0.5) ,0px 0px 20px 10px rgba(80, 42, 247, 0.6);
+        box-shadow: var(--shadow-gradient-second);  
     }
 
     & > div { 
         @include flex(row, space-between);
         
         padding: .5rem;
-        border: solid red 2px;
         
         & > figure{
-            border: solid red 2px;
-            width: max(20%, 200px);
+            width: 40%;
+            min-width: toRem(100);
+
             margin: 0;
             padding: .5rem;
             
@@ -38,38 +39,56 @@
             border-right: 2px solid rgba(0 0 0 /.2);                             
 
             & > img{
-                align-self: center;
-                
-                width: 64px;
-                height: 64px;
-                
-                margin-inline: .5rem;
+                width: toRem(64);
+                aspect-ratio: 1 / 1;
 
                 border-radius: 50%;
             }
-
             & > figcaption{
-                & > h3{
+                & > h3,
+                & > time{
                     margin-block: 0.5rem;
+                    font-size: var(--fs--1);                    
                 }
             }
         }
         & > div{ 
             @include flex(column, space-between);
-            
-            width: 80%;
 
-            padding-inline: .5rem;
+            width: calc(100% - toRem(100));
+
+            padding: .5rem;
 
             & > h2{
                 margin:0 0 0 .5rem;
-                font-size: clamp(.5rem, .3rem + 2vw, 1rem);
+                font-size: var(--fs-0);
             }
-
+            
             & > a{
-                margin-inline: auto 1rem;
-                font-size: 1rem;
+                position: relative;
+
+                margin-block: .5rem;
+                margin-inline: auto .5rem;
+
+                font-size: var(--fs--1);
+                font-weight: var(--fw-3);
+                letter-spacing: 1px;
                 white-space: nowrap;
+                
+                color: var(--theme-text);
+                
+                &::after{
+                    @include position(absolute, unset, toRem(-8), 0);
+                    content:"";
+                    height: toRem(3);
+                    width: 0;
+                    background: var(--accent-gradient);
+                    transition: all .3s ease;
+                }
+                
+                &:hover::after{
+                    width: 100%;
+                }
             }
         } 
     }

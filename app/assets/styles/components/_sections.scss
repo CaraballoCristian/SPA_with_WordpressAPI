@@ -1,4 +1,4 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 #root{ 
@@ -9,13 +9,13 @@
     background-position:top center;
 }
 .posts-section{
-    width: min(100%, 1200px);
+    width: min(100%, toRem(1200));
 
     margin-inline:auto;
 }
 //-----------------------------------
 .search-section{
-    width: min(100%, 900px);
+    width: min(100%, toRem(900));
 
     margin-inline:auto; 
 }
@@ -23,7 +23,6 @@
     @include position(sticky, 5rem, unset, unset, unset, 90);
     @include flex(row, center, center);
 
-    background-color: rgba(0  0  0 / .5);                                 //VARIABLES COLOR
     height: 4rem;
 
     opacity: 0;
@@ -33,24 +32,25 @@
     & > form{
         @include flex(row, center, center);
 
-        width: min(90%, 600px);
+        width: min(90%, toRem(600));
         height: 2.5rem;
         
         margin-inline: auto;
 
-        background-color: #eee;
-        border-radius: 10px;
-        padding:0rem;
+        background-color: var(--clr-white);
+        border-radius: toRem(10);
+        padding:0;
 
         & input{
-            width: min(100%, 600px);
+            width: min(100%, toRem(600));
 
             padding: .5rem;
             margin-inline: 2rem;
 
             border: none;
-            border-bottom: solid 2px #333;
-            background-color: #eee;
+            border-bottom: solid 2px var(--clr-black);
+            background-color: var(--clr-white);
+            color:var(--theme-white);
 
             &:focus{
                 outline: none;
@@ -61,18 +61,19 @@
             aspect-ratio: 1 / 1;
             
             border:none;
-            border-radius: 10px;
+            border-radius: toRem(10);
             
-            background-color: #333;            
+            background-color: var(--clr-second);            
         }
-    }
-}
-@media screen and (min-width: 900px){
-    .search-btn{
-        display: none;
     }
 }
 //-----------------------------------
 .post-section{
     width: 100%;
+}
+//-----------------------------------
+@media screen and (min-width: toEm(900)){
+    .search-btn{
+        display: none;
+    }
 }

@@ -60,12 +60,12 @@ export function preventScroll(){
         }
         //WHEN LAZY LOADING SEARCH CARDS
         if(location.hash.includes("#/search?search=") && document.querySelector(".search-section").classList.contains("skeleton-section")){
-            e.preventScroll();
+            e.preventDefault();
             e.stopPropagation();
         }
         //WHEN LAZY LOADING POSTS CARDS
         if(location.hash === "#/posts" && document.querySelector(".posts-section").classList.contains("skeleton-section")){
-            e.preventScroll();
+            e.preventDefault();
             e.stopPropagation(); 
         }
         //WHEN LAZY LOADING A POST

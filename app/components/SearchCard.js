@@ -22,9 +22,7 @@ return `
             </figure>
             <div>
                 <h2>${title}</h2>
-                <a class="btn" href="#/${slug}"">Read More!<span>
-                    <img src="app/assets/img/next.png">
-                </span></a>
+                <a href="#/${slug}"">Read More!</a>
             </div>
         </div>
     </article>

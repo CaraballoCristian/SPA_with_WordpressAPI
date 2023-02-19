@@ -1,47 +1,46 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 .post-card{
     @include flex(column, space-between, center);
     position: relative;
     
-    height: 350px;
+    height: toRem(350);
     width: 90%;
-    max-width: 300px;   
+    max-width: toRem(300);   
 
     margin: 1rem auto;
 
-    border-radius: 10px;
-
-    color: #222;
-
+    border-radius: toRem(10);
+    
     transform-style: preserve-3d;
     
     &-face{
         @include position(absolute, 0, 0, 0, 0);
+        
+        border-radius: toRem(10);
 
         overflow: hidden;
         
-        border-radius: 10px;                    //shadow variable
+        backface-visibility: hidden;
+        
+        color: var(--theme-text);
+        background: var(--theme-background);
+        
+        box-shadow: var(--shadow-black);
         
         transition: all .5s ease;
-        
-
-        box-shadow: 0px 0px 10px 5px rgba(34, 34, 34, .5);
-
-        backface-visibility: hidden;
-        //background: linear-gradient( rgba(80, 42, 247, 0.7),hsla(316, 100%, 60%, 0.7));
-        background:#eee;
     }
     &-front{
         transform: rotateY(0deg);
 
         &-top{
-            height: 150px;
+            height: toRem(150);
             
             &-img{
                 height: 100%;
                 width: fit-content;
+
                 object-fit: cover;
             }
             overflow: hidden;
@@ -65,7 +64,7 @@
                 .post-card-front-title{
                     margin: 0;
     
-                    font-size: clamp(1rem, .5rem + .5vw, 1.7rem);                             //corregir
+                    font-size: clamp(1rem, .5rem + .5vw, 1.7rem);    //better results
                 }
             }
             .post-card-front-author{
@@ -76,8 +75,8 @@
                 margin: 1rem auto 1rem;
                 
                 &-img{
-                    width: 64px;
-                    height: 64px;
+                    width: toRem(64);
+                    aspect-ratio: 1 / 1;
     
                     margin-inline: .5rem;
                     
@@ -106,18 +105,36 @@
         
         transform:  rotateY(180deg);
 
-        &-text{
-
-        }
         &-link{
-            margin-left: auto;
+            position: relative;
+            
+            margin-block: .5rem;
+            margin-inline: auto .5rem;
+
+            font-weight: var(--fw-3);
+            letter-spacing: 1px;
+
+            color: var(--theme-text);
+
+            &::after{
+                @include position(absolute, unset, toRem(-8), 0);
+                content:"";
+                height: toRem(3);
+                width: 0;
+                background: var(--accent-gradient);
+                transition: all .3s ease;
+            }
+            
+            &:hover::after{
+                width: 100%;
+            }
         }
     }
     &:hover .post-card-front{
         transform: rotateY(180deg);
     }
     &:hover .post-card-back{
-        box-shadow: 0px 0px 20px 10px rgba(255, 50, 200, 0.5) ,0px 0px 20px 10px rgba(80, 42, 247, 0.6);
+        box-shadow: var(--shadow-gradient-second);
         transform: rotateY(360deg);
     }
 }

@@ -1,4 +1,4 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 .loader{
@@ -13,10 +13,10 @@
     text-align: center;
     
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: var(--fw-3);
     
-    background-color: #dc3545;                                     //variable colors
-    color: #fff;                                                   //variable colors
+    background-color: var(--clr-err);
+    color: var(--clr-white);
 }
 .warn{
     padding: 1rem;
@@ -24,25 +24,26 @@
     text-align: center;
 
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: var(--fw-3);
     
-    color: #fff;                                                //variable colors    
+    color: var(--clr-white);
 }
 .btn{
     position:relative;
 
     @include flex(row, center, center);
 
-    width: 150px;
-    height: 40px;
+    width: toRem(150);
+    height: toRem(40);
     
-    padding: .5rem 1rem .5rem 2.5rem;
+    padding-block: .5rem;
+    padding-inline: 2.5rem 1rem;
     
-    color:#aaa;                                        // variable colors
-    border:solid transparent 2px;                             //usar variable ya que tiene que matchear con el color de letra
-    border-radius: 10px;
+    color:#aaa;
+    border:solid transparent 2px;
+    border-radius: toRem(10);
 
-    font-weight: bold;
+    font-weight: var(--fw-3);
     white-space: nowrap;
     
     transition: all .5s ease;
@@ -65,35 +66,20 @@
         height: calc(100% - 4px);
         aspect-ratio: 1 / 1;
         
-        border-radius: 7px;
+        border-radius: toRem(7);
         
-        background-color: transparent;                                 //variable colors
+        background-color: transparent;
         
         transition: all .5s ease;
-    }
-    
-    &::before{
-        content:"";
-        @include position(absolute, 0, 0, 0, unset, -1);
-
-        width: 0;
-        height: 100%;
-
-        background-color: rgba(255, 50, 200, 0.5);                      //variable colors
-
-        transition: all .5s ease;
-    }
-    &:hover::before{
-        width: 100%;
     }
     &:hover{
-        color:#eee;                                                  //variable colors
-        border-color: #eee;
+        color:var(--clr-white);                                                  //variable colors
+        border-color: var(--clr-white);
         box-shadow: inset 0px 0px 20px 30px rgba(255, 50, 200, 0.5) ,inset 0px 0px 20px 30px rgba(80, 42, 247, 0.6), 0px 0px 10px 5px rgba(255, 50, 200, 0.5) , 0px 0px 10px 5px rgba(80, 42, 247, 0.6);
         padding-inline: 1rem 2.5rem;
         & span{
-            transform: translateX(150px - 40px);
-            background-color: #eee;
+            transform: translateX(toRem(110));
+            background-color: var(--clr-white);
         }
     }
 }   

@@ -1,18 +1,16 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 .home-section-top-animation{
     position: relative;
-
-    height: 45vmin;
+    
+    width: min(80vmin, toRem(600));
     aspect-ratio: 1.618;
     
-    margin-top: 4rem;
-    padding:1rem;
+    margin-block: 4rem 5rem;
 
     opacity: 0;
 
-    text-align: center;
     transition: all .3s ease;
 
     & > .shape{
@@ -20,7 +18,8 @@
         
         transition: all 1s ease;
     }
-    //---------------------------------   COLORS
+    //-----------------------------------------   
+    //COLORS
     & > .shape:nth-child(1){
         background: linear-gradient(#8a00d4, #EA047E);
         
@@ -31,6 +30,7 @@
         background: linear-gradient(#018286, #00F5FF);
         
         box-shadow: 0 0 1rem rgba(51, 51, 51, .5);
+
         z-index: 2;
     }
     & > .shape:nth-child(3){
@@ -61,7 +61,8 @@
         
         z-index: 2;
     }
-    //---------------------------------   ROUNDNESS
+    //------------------------------------
+    // ROUNDNESS
     &[data-roundness="1"] > .shape{
         border-radius: 0;
     }
@@ -71,36 +72,31 @@
     &[data-roundness="3"] > .shape{
         border-radius: 50vh;
     }
-    //irregular roundness
+    // IRREGULAR ROUNDNESS
     &[data-roundness="4"] > .shape:nth-child(1) {  
         border-bottom-left-radius: 10rem;
     }
-    
     &[data-roundness="4"] > .shape:nth-child(2) {  
         border-radius: 50vh;
     }
-    
     &[data-roundness="4"] > .shape:nth-child(3) {  
-        border-top-right-radius: 10rem;
+        border-top-right-radius: 50%;
     }
-    
     &[data-roundness="4"] > .shape:nth-child(4) {  
         border-top-right-radius: 10rem;
         border-bottom-right-radius: 10rem;
     }
-    
     &[data-roundness="4"] > .shape:nth-child(5) {  
         border-bottom-left-radius: 10rem;
     }
-    
     &[data-roundness="4"] > .shape:nth-child(6) {  
         border-top-left-radius: 16rem;
     }
-    
     &[data-roundness="4"] > .shape:nth-child(7) {  
         border-top-left-radius: 10rem;
     }
-    //---------------------------------   POSITION 1
+    //---------------------------------------
+    //POSITION 1
     &[data-position="1"] > .shape:nth-child(1){
         left: 0;
         top: 0;
@@ -143,8 +139,8 @@
         height: 25%;
         width: 15%;
     }
-    //---------------------------------   POSITION 2
-
+    //--------------------------------------
+    //POSITION 2
     &[data-position="2"] > .shape:nth-child(1){
         left: 25%;
         top: 20%;
@@ -187,54 +183,48 @@
         height: 60%;
         width: 10%;
     }
-    //---------------------------------   POSITION 3
+    //------------------------------------
+    //POSITION 3
     &[data-position="3"] > .shape:nth-child(1) {
         left: 0%;
         top: 16.5%;
         height: 32%;
         width: 20%;
-    }
-    
+    }    
     &[data-position="3"] > .shape:nth-child(4) {  
         left: 20%;
         top: 2.7%;
         height: 55%;
         width: 34%;
-    }
-    
+    }   
     &[data-position="3"] > .shape:nth-child(3) {  
         left: 38%;
         top: 0%;
         height: 100%;
         width: 62%;
-    }
-    
+    }  
     &[data-position="3"] > .shape:nth-child(6) {  
         left: 0%;
         top: 47.3%;
         height: 55%;
         width: 34%;
-    }
-    
+    }   
     &[data-position="3"] > .shape:nth-child(5) {   
         left: 34%;
         top: 56.4%;
         height: 32%;
         width: 20%;
-    }
-    
+    }   
     &[data-position="3"] > .shape:nth-child(2) {  
         left: 66%;
         top: 45%;
         height: 55%;
         width: 34%;
-    }
-    
+    }    
     &[data-position="3"] > .shape:nth-child(7) {  
         left: 80%;
         top: 68%;
         height: 32%;
         width: 20%;
     }
-
 }

@@ -9,7 +9,8 @@ import { relatedCard } from "./RelatedCard.js";
 import Loaders from "./Skeletons.js";
 
 let query = "",
-    prev;
+    prev,
+    homeData = [];
 
 export async function Router(){
 
@@ -37,44 +38,61 @@ export async function Router(){
         $homeLink.classList.add("selected");
 
         //CREATING SPIN-LOADER
-        let $homeLoader  = d.createElement("div");
+        let $homeLoader = d.createElement("div");
         $homeLoader.classList.add("home-loader");
         $homeLoader.innerHTML = `
             <img src="app/assets/img/spin-loader.svg">
         `
         $root.appendChild($homeLoader);
+        
+        //AVOIDING HOME TO LOAD EVERY TIME
+        if(homeData.length === 0){
+        
+            await ajax({
+                url: api.HOME,
+                cbSuccess: (posts) => {
+                    const $home = d.createElement("section");
+                    $home.classList.add("home-section");
+                    
+                    //CRETING LAST POST CARD
+                    const $homeCard = HomeCard(posts[0], "home-card-main");
+                    
+                    //CREATING ALL OTHER HOME CARDS CONTAINER AND ADDING THE CARDS TO IT
+                    const $cards = d.createElement("div");
+                    $cards.classList.add("home-cards-box");
+    
+                    for(let i = 1; i < posts.length; i++){
+                        $cards.innerHTML += HomeCard(posts[i], `secondary-card-${i} home-card-secondary`);
+                    }
+    
+                    //CREATING HOME SECTION WITH ALL THE CARDS CREATED BEFORE
+                    $home.innerHTML = Home($homeCard, $cards);
 
-        await ajax({
-            url: api.HOME,
-            cbSuccess: (posts) => {
-                const $home = d.createElement("section");
-                $home.classList.add("home-section");
-                
-                //CRETING LAST POST CARD
-                const $homeCard = HomeCard(posts[0], "home-card-main");
-                
-                //CREATING ALL OTHER HOME CARDS CONTAINER AND ADDING THE CARDS TO IT
-                const $cards = d.createElement("div");
-                $cards.classList.add("home-cards-box");
-
-                for(let i = 1; i < posts.length; i++){
-                    $cards.innerHTML += HomeCard(posts[i], `secondary-card-${i} home-card-secondary`);
-                }
-
-                //CREATING HOME SECTION WITH ALL THE CARDS CREATED BEFORE
-                $home.innerHTML = Home($homeCard, $cards);
-                
-                //APPENDIGN HOME SECTION TO MAIN, AND REMOVING LOADER AFTHER THAT
-                let aux = d.querySelector(".home-loader");
-                setTimeout(() => {
-                    $main.appendChild($home);
-                    $homeLoader.classList.add("fade-loader") ;
+                    //SAVING DATA TO AVOID LOAD AGAIN
+                    homeData.push($homeCard, $cards);
+                    
+                    //APPENDIGN HOME SECTION TO MAIN, AND REMOVING LOADER AFTHER THAT
+                    let aux = d.querySelector(".home-loader");
                     setTimeout(() => {
-                        $root.removeChild(aux);
-                    },500);
-                },3500);
-            }
-        });
+                        $main.appendChild($home);
+                        $homeLoader.classList.add("fade-loader") ;
+                        setTimeout(() => {
+                            $root.removeChild(aux);
+                        },500);
+                    },3500);
+                }
+            });
+        }else {
+            let $home = d.createElement("section"),
+                aux = d.querySelector(".home-loader");
+            
+            $home.classList.add("home-section");
+            $home.innerHTML = Home(homeData[0], homeData[1]);
+            
+            $main.appendChild($home);
+            $homeLoader.classList.add("fade-loader") ;
+            $root.removeChild(aux);
+        }
 
     }//ALL POSTS SECTION
     else if(hash === "#/posts"){
@@ -180,7 +198,6 @@ export async function Router(){
         await ajax({
             url: `${api.SEARCH}${query}`,
             cbSuccess: async (search) => {
-                console.log("query is " + query)
 
                 let $containerSearch = d.createElement("section");
                 $containerSearch.classList.add("search-section");

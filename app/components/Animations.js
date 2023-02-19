@@ -50,7 +50,7 @@ export function Animations(){
                 gsap.timeline()
                     .from(".home-section-top-text",{duration:1.5, opacity: 0, x: "-200%"})
                     .to("#home-h2", {opacity: 1,  filter:"blur(0px)", duration: 3},"<")
-                    .to("#home-h2-middle", {text:"... and GSAP!", ease:"power1.in", duration:2}, "-=1")
+                    .to("#home-h2-middle", {text:"...and GSAP!", ease:"power1.in", duration:2}, "-=1")
                     .to("#home-h2-end", {text:"_", repeat: -1, yoyo: true, repeatDelay: .3, duration: .2}, "<")
                     .to("#home-h3",{duration:1,filter:"blur(0px)", opacity:1, y: "0%"}, "<");
 
@@ -69,7 +69,11 @@ export function Animations(){
     //SEARCH SECTION ANIMATIONS
     if(location.hash.includes("#/search")){
         //FADE-IN SEARCH HEADER
-        gsap.to(".search-header", {duration: .5, y: "0%", opacity: 1, ease:"linear"})
+        if(location.hash.includes("#/search?search=")) {
+            gsap.set(".search-header", {y: "0%", opacity: 1})
+        }else {
+            gsap.to(".search-header", {duration: .5, y: "0%", opacity: 1, ease:"linear"})
+        }
         
         //WHEN ASKING FOR A QUERY, START LOOPING
         if(location.hash.includes("#/search?search=")){

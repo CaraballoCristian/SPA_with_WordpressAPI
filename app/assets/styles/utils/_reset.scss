@@ -1,14 +1,12 @@
 html{
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    /*font-family: 'Cabin', sans-serif;*/
+    font-family: 'Roboto', sans-serif;
 }
 *::after,
 *::before,
 * {
     box-sizing: border-box;
 }
-//elementos no seleccionables
 .title,
 .menu > *{
     -webkit-user-select: none;

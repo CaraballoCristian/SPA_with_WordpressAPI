@@ -3,6 +3,7 @@ import { CalculateDate } from "../helpers/calculate_date.js";
 export function PostCard(props){
     let {title, date, slug, _embedded, excerpt} = props,
         dateFormat = new Date(date).toLocaleString(),
+        excerptFormat,
         authorImg = _embedded.author[0].avatar_urls["48"]
             ? _embedded.author[0].avatar_urls["48"]
             : "app/assets/img/no-author.png",
@@ -14,6 +15,10 @@ export function PostCard(props){
             : "app/assets/img/dummy-cover.png";
 
     let postDate = CalculateDate(new Date(date));
+
+    if(excerpt.rendered.length > 300) excerptFormat = excerpt.rendered.slice(0,300) + " ...";
+    else excerptFormat = excerpt.rendered.slice(0,-5) + " ...";
+
     return `
         <article  class="post-card">
             
@@ -37,11 +42,9 @@ export function PostCard(props){
             </div> 
             <div class="post-card-back post-card-face"> 
                 <div class="post-card-back-text">
-                    ${excerpt.rendered}
+                    ${excerptFormat}
                 </div>
-                <a class="post-card-back-link btn" href="#/${slug}">Read More!<span>
-                    <img src="app/assets/img/next.png">
-                </span></a>
+                <a class="post-card-back-link" href="#/${slug}">Read More!</a>
             </div> 
 
         </article>

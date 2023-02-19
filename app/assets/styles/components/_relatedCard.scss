@@ -1,20 +1,22 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 .related-card{
     margin-left: 1rem;
+
     & figure{
         position:relative;
 
         @include flex(row, space-between);
 
         width: 100%;
-        height: 60px;
+        height: toRem(60);
 
         margin: 1rem 0 0;
  
-        background-color: #eee;                   //color variable
+        background-color: var(--theme-background);
+        color: var(--theme-text);
         
-        border-radius: 10px;
+        border-radius: toRem(10);
 
         transition: all .3s ease-in-out;
         
@@ -29,13 +31,10 @@
             
             text-align: start;
 
-            & h4{
-                margin:.5rem 0 0;
-
-                font-size: calc(.3rem + .5vw);                          //CLAMP IT!
-            }
+            & h4,
             & time{
-                font-size: calc(.3rem + .5vw);                          //CLAMP IT!
+                margin:.5rem 0 0;
+                font-size: clamp(.7rem, .5rem + .2vw, 1rem); //BETTER RESULTS
             }
         }
         & img{
@@ -50,25 +49,24 @@
         }
     }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: toEm(1024)) {
     .related-card{
         @include flex(row, start);
 
         margin: 0;
         
-        transition: all 200ms ease-in-out;
+        transition: all .2s ease-in-out;
         
         & figure{
             flex-direction: column-reverse;
 
-            height: 250px;
-            width: 200px;
+            height: toRem(250);
+            width: toRem(200);
             
             margin: .5rem 0;
             padding-inline:0;
             
-            background-color: #eee;                                                 //VARIABLE COLORS
-            box-shadow: -1rem 0px 2rem #000;                                       //VARIABLE SHADOWS
+            box-shadow: -1rem 0px 2rem #000;        //STACKED EFFECT
 
             & figcaption{
                 @include flex(column, space-between);

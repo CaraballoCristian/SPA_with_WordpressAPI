@@ -1,52 +1,50 @@
-@import "../utils/mixins";
+@import "../utils/mixins_and_functions";
 @import "../utils/variables";
 
 .footer{
     position:relative;
-
+    
     @include flex(column, space-between, center);
 
     min-height: calc(100vh - 5rem);
 
-    padding:0;
-    
-    text-align: center;
-
-    background-color: #2c3465;  
+    background-color: var(--clr-third);  
 
     &-top{
         @include flex(row, center, center);
+
         min-height: calc(100vh - 10rem);
-        padding:0;
         width: 100%;
     }
     &-bottom{
         @include flex(row, space-between, center);
+        text-align: center;
         
         width: calc(100% - 2rem);
         max-height: 5rem;
         
-        padding: 1rem;
+        padding: .5rem;
         
-        border-top: #363f79 solid 2px;
-        color: #eee;
+        border-top: var(--clr-fourth)  solid 2px;
+        color: var(--clr-white);
 
-        letter-spacing: 2px;
+        font-size: var(--fs--1);
+        letter-spacing: toRem(2);
 
         &-media{
             @include flex(row, space-between);
+            
+            width: min(100%, 8rem);
+
             &-github,
             &-linkedin{
                 display: flex;
-                width: 48px;
 
-                padding:0;
                 margin-left: 1rem;
                 
-                background-color:#ff32c8ab;
-                
-                border:none;
-                border-radius: 10px;    
+                background-color:var(--clr-second);
+
+                border-radius: toRem(10);    
 
                 &:hover{
                     opacity: .8;

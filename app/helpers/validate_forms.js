@@ -55,11 +55,10 @@ export function validateForm(){
 
     //SUBMIT TO EMAIL
     d.addEventListener("submit", e => {
-        e.preventDefault(); 
-        let form = document.querySelector("#form")
-        
-        if(e.target !== form) return;
+        e.preventDefault();
 
+        if(!e.target.matches("#form")) return;
+        
         let ok = true;
 
         $inputs.forEach(input => {

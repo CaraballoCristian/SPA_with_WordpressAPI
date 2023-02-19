@@ -16,7 +16,7 @@ export function Home(homeCard,cards){
     <div class="home-section-top">
         <div class="home-section-top-text">
             <h2  id="home-h2" class="home-section-top-text-about same">
-                Simple SPA that consumes data from CSS-TRICKS using WordPress API. Created with HTML, SASS, JavaScript
+                SPA that consumes data from CSS-TRICKS using WordPress API. Created with HTML, SASS, JavaScript
             </h2><h2 id="home-h2-middle" class="same"></h2><h2 id="home-h2-end" class="same"></h2>
             <h3 id="home-h3" >For more information please check <a href="https://github.com/CaraballoCristian/SPA_with_WordpressAPI" id="home-gh-link" target="_blank" rel="noopener">the repo</a> on GitHub!</h3>
         </div>

@@ -1,0 +1,63 @@
+@import "../utils/mixins_and_functions";
+@import "../utils/variables";
+
+#dark-mode{
+    border: solid 2px var(--clr-second);
+    position: relative;
+    
+    width: 3rem;
+    aspect-ratio: 2;
+    
+    background-color: var(--theme-background);
+
+    box-shadow: inset 0px 5px 5px rgba($color: #222, $alpha: .5);   
+    
+    border-radius: 50vh;
+    
+    overflow: hidden;
+    
+    cursor: pointer;
+    
+    &::before,
+    &::after{
+        content:"";
+        @include position(absolute, 2px, 2px);
+
+        height: calc(100% - 4px);
+        aspect-ratio: 1;
+        
+        border-radius: 50vh;
+        
+        
+        box-shadow: inset 0px 2px 5px rgba($color: var(--theme-background), $alpha: .5);
+        
+        transition: all var(--delay) ease-in-out;
+    }
+    &::before{
+        left: 2px;
+        
+        background-color: var(--clr-second);
+        background-color: var(--clr-first);
+    }
+    &::after{
+        right: 2px;
+        background-color: var(--clr-second);
+        
+        transform: translateX(150%);
+    }
+}
+#theme{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    
+    &:checked + #dark-mode{        
+        &::before{
+            transform: translateX(-150%);
+        }
+        &::after{
+            transform: translateX(0%);
+        }
+    
+    }
+}
