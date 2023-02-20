@@ -10,28 +10,28 @@ export function DarkMode(){
     const clrLightBackground = getComputedStyle($html).getPropertyValue("--theme-light-background");
     const clrLightSkeletonBackground = getComputedStyle($html).getPropertyValue("--theme-skeleton-light-background");
     const clrLightSkeletonElement = getComputedStyle($html).getPropertyValue("--theme-skeleton-light-element");
-    const clrLightSkeletonText = getComputedStyle($html).getPropertyValue("--theme-skeleton-light-text");
+    const clrLightSkeletonShine = getComputedStyle($html).getPropertyValue("--theme-skeleton-light-shine");
     
     //DARK COLORS
     const clrDarkText = getComputedStyle($html).getPropertyValue("--theme-dark-text");
     const clrDarkBackground = getComputedStyle($html).getPropertyValue("--theme-dark-background");
     const clrDarkSkeletonBackground = getComputedStyle($html).getPropertyValue("--theme-skeleton-dark-background");
     const clrDarkSkeletonElement = getComputedStyle($html).getPropertyValue("--theme-skeleton-dark-element");
-    const clrDarkSkeletonText = getComputedStyle($html).getPropertyValue("--theme-skeleton-dark-text");
+    const clrDarkSkeletonShine = getComputedStyle($html).getPropertyValue("--theme-skeleton-dark-shine");
 
     function dark(){
         $html.style.setProperty("--theme-background", clrDarkBackground);
         $html.style.setProperty("--theme-text", clrDarkText);
         $html.style.setProperty("--theme-skeleton-background", clrDarkSkeletonBackground);
         $html.style.setProperty("--theme-skeleton-element", clrDarkSkeletonElement);
-        $html.style.setProperty("--theme-skeleton-text", clrDarkSkeletonText);
+        $html.style.setProperty("--theme-skeleton-shine", clrDarkSkeletonShine);
     };
     function light(){
         $html.style.setProperty("--theme-background", clrLightBackground);
         $html.style.setProperty("--theme-text", clrLightText);
         $html.style.setProperty("--theme-skeleton-background", clrLightSkeletonBackground);
         $html.style.setProperty("--theme-skeleton-element", clrLightSkeletonElement);
-        $html.style.setProperty("--theme-skeleton-text", clrLightSkeletonText);
+        $html.style.setProperty("--theme-skeleton-shine", clrLightSkeletonShine);
     };
     
     let loop = setInterval(() => {
