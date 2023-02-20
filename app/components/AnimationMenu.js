@@ -26,7 +26,7 @@ export function AnimationMenu(){
     document.addEventListener("click", e => {
         if(e.target.matches(".hamb-menu-btn") || e.target.matches(".hamb-menu-btn *")){
             if(!$hamb.classList.contains("isOpen")){ 
-                toCross.play();                          //for some reason, it does not work inside a master timeline
+                toCross.play();
                 toOpen.play();
             }else{
                 toCross.reverse();
