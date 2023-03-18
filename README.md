@@ -2,6 +2,7 @@
 
 ## Live Demo:
   [Live Demo](https://caraballocristian.github.io/SPA_with_WordpressAPI)
+  <a href="https://caraballocristian.github.io/SPA_with_WordpressAPI" rel="noopener" target="_blank">Live Demo<a>
 #
 
 ## About:
