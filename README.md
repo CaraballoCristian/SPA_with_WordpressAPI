@@ -1,7 +1,8 @@
 # SPA Blog
 
+> **⚠️ Important:** Some API calls are currently not working due to CORS restrictions.
 ## Live Demo:
-  [Live Demo](https://caraballocristian.github.io/SPA_with_WordpressAPI)
+  [Live Demo](https://caraballocristian.github.io/SPA_with_WordpressAPI)  
 #
 
 ## About:
