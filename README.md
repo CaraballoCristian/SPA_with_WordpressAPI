@@ -8,7 +8,8 @@ Built with focus on **dynamic content, SPA navigation, theme customization and m
 
 ## 🌐 Live Demo
 
-🔗 [Live Demo](https://caraballocristian.github.io/SPA_with_WordpressAPI) 
+🔗 https://caraballocristian.github.io/SPA_with_WordpressAPI
+
 ---
 
 🚀 Installation & Setup
@@ -20,14 +21,8 @@ git clone https://github.com/your-username/spa-blog.git
 # Open project folder:
 cd spa-blog
 
-# Install dependencies:
-npm install
-
-# Run development server:
-npm start
-
-# Open in browser:
-http://localhost:3000
+# Run the project:
+Open index.html in your browser
 ```
 
 ---
@@ -49,7 +44,7 @@ http://localhost:3000
 * ⚡ **Smooth animations and interactions** with GSAP
 * 📱 **Fully responsive design**
 
-> ⚠️ Some API requests may currently fail due to CORS restrictions.
+**> ⚠️ Some API requests may currently fail due to CORS restrictions.**
 
 ---
 
