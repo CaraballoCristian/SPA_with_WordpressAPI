@@ -29,7 +29,7 @@ Open index.html in your browser
 
 🖼️ Preview
 
-
+![SPA Preview](./app/assets/img/spa-mockup.png)
 
 ---
 
