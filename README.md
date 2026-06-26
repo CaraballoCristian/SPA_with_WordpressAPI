@@ -44,8 +44,6 @@ Open index.html in your browser
 * ⚡ **Smooth animations and interactions** with GSAP
 * 📱 **Fully responsive design**
 
-**> ⚠️ Some API requests may currently fail due to CORS restrictions.**
-
 ---
 
 ## 🛠️ Tech Stack
