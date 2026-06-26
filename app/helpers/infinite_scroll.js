@@ -37,22 +37,7 @@ export async function infiniteScroll() {
                 cbSuccess: async (posts) => {
                     let html = "";
 
-                    for(let i = 0; i<posts.length; i++){
-                        if(!hash.includes("#/search")) html += Component(posts[i]);
-                        else{
-                            let id = posts[i]._embedded.self[0].author;
-
-                            //ONLY ASK FOR POST WITH AN AUTHOR (THOSE WHO DOESN'T HAVE ONE ARE GENERALLY MISSING POSTS AND THROW ERROR)
-                            if(id) {
-                                await ajax({
-                                    url: `${api.USER}/${id}`,
-                                    cbSuccess: (user) => {
-                                        html += SearchCard(posts[i], user);
-                                    },
-                                });
-                            }
-                        }
-                    }
+                    html = posts.map(p => Component(p)).join("");
                     d.querySelector(section).insertAdjacentHTML("beforeend", html);
                     
                     d.querySelector(".loader").style.display = "none";
