@@ -16,10 +16,10 @@ Built with focus on **dynamic content, SPA navigation, theme customization and m
 
 ```bash
 # Clone the repository:
-git clone https://github.com/your-username/spa-blog.git
+git clone https://github.com/CaraballoCristian/SPA_with_WordpressAPI.git
 
 # Open project folder:
-cd spa-blog
+cd SPA_with_WordpressAPI
 
 # Run the project:
 Open index.html in your browser
