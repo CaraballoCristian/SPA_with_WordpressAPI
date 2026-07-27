@@ -3,15 +3,10 @@ import { CalculateDate } from "../helpers/calculate_date.js";
 export function HomeCard(props, className){
     let {title, date, slug, _embedded, excerpt} = props,
         dateFormat = new Date(date).toLocaleString(),
-        authorImg = _embedded.author[0].avatar_urls["96"]
-            ? _embedded.author[0].avatar_urls["96"]
-            : "app/assets/img/no-author.png",
-        authorName = _embedded.author[0].name
-            ? _embedded.author[0].name
-            : "John Doe",
-        urlCover = _embedded["wp:featuredmedia"] 
-            ? _embedded["wp:featuredmedia"][0].source_url 
-            : "app/assets/img/dummy-cover.png";
+        postAuthor = _embedded?.author?.[0],
+        authorImg = postAuthor?.avatar_urls?.["96"] || "app/assets/img/no-author.png",
+        authorName = postAuthor?.name || "TechCrunch",
+        urlCover = _embedded?.["wp:featuredmedia"]?.[0]?.source_url || "app/assets/img/dummy-cover.png";
 
     let postDate = CalculateDate(new Date(date));
     

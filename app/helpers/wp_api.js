@@ -1,4 +1,4 @@
-const NAME = "css-tricks",
+const NAME = "techcrunch",
   DOMAIN = `https://${NAME}.com`,
   SITE = `${DOMAIN}/wp-json`,
   API_WP = `${SITE}/wp/v2`,

@@ -4,13 +4,12 @@ import { getDefaultFontSize } from "../helpers/getDefaultFontSize.js";
 export function Post(props, related, author){
     let {content, title, date} = props,
         dateFormat = new Date(date).toLocaleString(), 
-        authorImg = author.avatar_urls[96] 
-            ? author.avatar_urls[96]
-            : "app/assets/img/no-author.png";
+        authorImg = author?.avatar_urls?.[96] || "app/assets/img/no-author.png",
+        coverUrl = props.jetpack_featured_media_url || props._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "";
  
     //USING POST COVER IMG AS BACKGROUND
     document.getElementById("root").style.backgroundImage =`radial-gradient(circle at -10% -10%,#ff32c8ab, 25%, transparent 50%),
-                                                            radial-gradient( circle at 105% 35%, #ff32caab, 20%,#0a1756 60%), url("${props.featured_media_src_url}")`;
+                                                            radial-gradient( circle at 105% 35%, #ff32caab, 20%,#0a1756 60%), url("${coverUrl}")`;
     document.getElementById("root").style.backgroundSize = "cover";  
 
     document.addEventListener("click", e => {
@@ -43,7 +42,7 @@ export function Post(props, related, author){
                 <figure class="post-section-header-left-author">
                     <img src="${authorImg}" alt="author">
                     <div>
-                        <h3>${author.name}</h3>
+                        <h3>${author.name || "TechCrunch"}</h3>
                         <time datetime="${dateFormat}">${dateFormat}</time>
                     </div>    
                 </figure>            

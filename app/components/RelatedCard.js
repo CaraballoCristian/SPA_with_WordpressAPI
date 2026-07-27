@@ -1,8 +1,8 @@
 import { CalculateDate } from "../helpers/calculate_date.js";
 
 export function relatedCard(props){
-    let {featured_media_src_url, date, title, slug} = props,
-        postImg = featured_media_src_url ? featured_media_src_url : "app/assets/img/dummy-cover.png",
+    let {date, title, slug, jetpack_featured_media_url, _embedded} = props,
+        postImg = jetpack_featured_media_url || _embedded?.["wp:featuredmedia"]?.[0]?.source_url || "app/assets/img/dummy-cover.png",
         dateFormat = CalculateDate(new Date(date)),
         titleFormat;
 

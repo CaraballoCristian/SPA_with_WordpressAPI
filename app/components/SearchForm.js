@@ -7,7 +7,7 @@ export function SearchForm() {
   const $input = d.createElement("input");
   $input.name = "search";
   $input.type = "search";
-  $input.placeholder = "Search... (Try 'Angular')";
+  $input.placeholder = "Search... (Try 'OpenAI')";
   $input.autocomplete = "off";
 
   const $btn = d.createElement("button");

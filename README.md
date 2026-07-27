@@ -1,6 +1,6 @@
 # 🚀 SPA Blog
 
-Single Page Application blog that consumes content from **CSS-Tricks** through the **WordPress REST API**, displaying it in a fully customized interface.
+Single Page Application blog that consumes content from **TechCrunch** through the **WordPress REST API**, displaying it in a fully customized interface.
 
 Built with focus on **dynamic content, SPA navigation, theme customization and modern frontend practices**.
 
@@ -35,8 +35,8 @@ Open index.html in your browser
 
 ## ✨ Features
 
-* 📖 **Dynamic blog content** consumed from the CSS-Tricks WordPress API
-* 🔄 **Automatic content updates** when changes are detected in CSS-Tricks
+* 📖 **Dynamic blog content** consumed from the TechCrunch WordPress API
+* 🔄 **Automatic content updates** when changes are detected in TechCrunch
 * 🧭 **Hash-based navigation** for SPA-friendly routing
 * 📩 **Contact form integration** that sends messages directly to inbox
 * 🌙 **Dark / Light mode toggle**

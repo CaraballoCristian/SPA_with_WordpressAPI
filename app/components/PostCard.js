@@ -4,15 +4,10 @@ export function PostCard(props){
     let {title, date, slug, _embedded, excerpt} = props,
         dateFormat = new Date(date).toLocaleString(),
         excerptFormat,
-        authorImg = _embedded.author[0].avatar_urls["48"]
-            ? _embedded.author[0].avatar_urls["48"]
-            : "app/assets/img/no-author.png",
-        authorName = _embedded.author[0].name
-            ? _embedded.author[0].name
-            : "John Doe",
-        urlCover = _embedded["wp:featuredmedia"] 
-            ? _embedded["wp:featuredmedia"][0].source_url 
-            : "app/assets/img/dummy-cover.png";
+        postAuthor = _embedded?.author?.[0],
+        authorImg = postAuthor?.avatar_urls?.["48"] || "app/assets/img/no-author.png",
+        authorName = postAuthor?.name || "TechCrunch",
+        urlCover = _embedded?.["wp:featuredmedia"]?.[0]?.source_url || "app/assets/img/dummy-cover.png";
 
     let postDate = CalculateDate(new Date(date));
 
@@ -24,7 +19,7 @@ export function PostCard(props){
             
             <div class="post-card-front post-card-face">
                 <div class="post-card-front-top">
-                    <img class="post-card-front-top-img"src="${urlCover}"" alt="">
+                    <img class="post-card-front-top-img" src="${urlCover}" alt="">
                 </div>      
 
                 <div class="post-card-front-bottom">

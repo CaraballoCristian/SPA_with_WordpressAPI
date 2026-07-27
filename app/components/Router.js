@@ -231,17 +231,15 @@ export async function Router() {
       url: `${api.POST}${slugUrl}`,
       cbSuccess: async (post) => {
         //OBTAINING RELATED CARDS
-        let related = post[0]["jetpack-related-posts"],
-          htmlRelated = "",
-          author = {};
+        let htmlRelated = "",
+          author = {},
+          categories = post[0].categories;
 
-        //FETCH ALL RELATED POSTS IN A SINGLE REQUEST
-        if (related && related.length) {
-          const ids = related.map(r => r.id).join(",");
+        //FETCH RELATED POSTS BY CATEGORY
+        if (categories?.length) {
           try {
-            const res = await fetch(`${api.ID}?include=${ids}&_embed`);
+            const res = await fetch(`${api.ID}?categories=${categories[0]}&_embed&per_page=4&exclude=${post[0].id}`);
             const relatedPosts = await res.json();
-            relatedPosts.sort((a, b) => b.id - a.id);
             htmlRelated = relatedPosts.map(p => relatedCard(p)).join("");
           } catch (e) {
             htmlRelated = "";
@@ -256,7 +254,8 @@ export async function Router() {
             cbSuccess: (user) => (author = user),
           });
         } */
-        author = post[0]._embedded?.author?.[0] || {};
+        let embAuthor = post[0]._embedded?.author?.[0];
+        author = (embAuthor && !embAuthor.code) ? embAuthor : {};
 
         //CREATING AND APPENDING ALL POST DATA TO MAIN
         setTimeout(() => {
